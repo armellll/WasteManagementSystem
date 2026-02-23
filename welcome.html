@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoTrack — Waste Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green-deep: #0d2b1e; --green-mid: #1a4a30; --green-bright: #2d7a4f;
+  --green-accent: #4caf78; --lime: #a8e063; --cream: #f5f0e8;
+  --sand: #e8dfc8; --text-main: #0d2b1e; --text-muted: #4a6b58; --red: #e05252;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; overflow-x: hidden; }
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle at 15% 85%, rgba(76,175,120,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(168,224,99,0.10) 0%, transparent 45%);
+}
+.page { position: relative; z-index: 1; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.left-panel { padding: 60px 52px 60px 60px; display: flex; flex-direction: column; justify-content: center; animation: fadeSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes fadeSlideLeft { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:translateX(0)} }
+.badge { display:inline-flex; align-items:center; gap:8px; background:var(--green-mid); color:var(--lime); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:7px 14px; border-radius:100px; margin-bottom:28px; width:fit-content; }
+.badge-dot { width:6px; height:6px; background:var(--lime); border-radius:50%; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+.logo-row { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+.logo-icon { width:48px; height:48px; background:var(--green-bright); border-radius:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 4px 18px rgba(45,122,79,0.35); }
+.logo-icon svg { width:26px; height:26px; }
+.logo-name { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:var(--green-deep); letter-spacing:-0.02em; }
+.logo-name span { color:var(--green-bright); }
+h1 { font-family:'Syne',sans-serif; font-size:clamp(30px,4vw,54px); font-weight:800; line-height:1.06; letter-spacing:-0.03em; color:var(--green-deep); margin-bottom:20px; }
+h1 em { font-style:normal; color:var(--green-bright); position:relative; }
+h1 em::after { content:''; position:absolute; bottom:2px; left:0; right:0; height:4px; background:var(--lime); border-radius:2px; opacity:0.6; }
+.description { font-size:15.5px; font-weight:300; line-height:1.8; color:var(--text-muted); max-width:440px; margin-bottom:36px; }
+.stats { display:flex; gap:28px; flex-wrap:wrap; }
+.stat { display:flex; flex-direction:column; }
+.stat-value { font-family:'Syne',sans-serif; font-size:24px; font-weight:700; color:var(--green-deep); line-height:1; }
+.stat-label { font-size:12px; color:var(--text-muted); margin-top:4px; }
+.stat-divider { width:1px; background:var(--sand); align-self:stretch; }
+.right-panel { padding:60px 60px 60px 52px; display:flex; flex-direction:column; justify-content:center; border-left:1px solid var(--sand); animation:fadeSlideRight 0.9s 0.15s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes fadeSlideRight { from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:translateX(0)} }
+.panel-heading { font-family:'Syne',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+.panel-title { font-family:'Syne',sans-serif; font-size:26px; font-weight:700; color:var(--green-deep); letter-spacing:-0.02em; margin-bottom:8px; }
+.panel-sub { font-size:14px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
+.section-card { background:#fff; border:1.5px solid var(--sand); border-radius:18px; padding:24px; margin-bottom:14px; transition:border-color 0.2s,box-shadow 0.2s; }
+.section-card:hover { border-color:var(--green-accent); box-shadow:0 8px 28px rgba(45,122,79,0.09); }
+.section-label { display:flex; align-items:center; gap:10px; font-family:'Syne',sans-serif; font-size:14px; font-weight:600; color:var(--green-deep); margin-bottom:14px; }
+.section-icon { width:30px; height:30px; background:rgba(76,175,120,0.12); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; }
+select { width:100%; appearance:none; -webkit-appearance:none; background:var(--cream); border:1.5px solid var(--sand); border-radius:11px; padding:13px 42px 13px 15px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text-main); cursor:pointer; outline:none; margin-bottom:12px; transition:border-color 0.2s; background-image:url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234a6b58' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 13px center; }
+select:focus { border-color:var(--green-accent); }
+.btn { width:100%; padding:14px 20px; border-radius:11px; font-family:'Syne',sans-serif; font-size:14px; font-weight:600; cursor:pointer; border:none; transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1); display:flex; align-items:center; justify-content:center; gap:8px; }
+.btn-primary { background:var(--green-bright); color:#fff; box-shadow:0 4px 14px rgba(45,122,79,0.28); }
+.btn-primary:hover { background:var(--green-mid); transform:translateY(-2px); }
+.divider { display:flex; align-items:center; gap:10px; margin:4px 0 14px; }
+.divider-line { flex:1; height:1px; background:var(--sand); }
+.divider-text { font-size:11px; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; }
+.admin-card { background:linear-gradient(135deg,var(--green-deep),var(--green-mid)); border:none !important; }
+.admin-card:hover { box-shadow:0 10px 32px rgba(13,43,30,0.22) !important; }
+.admin-desc { font-size:13px; color:rgba(255,255,255,0.55); margin-bottom:14px; line-height:1.6; }
+.admin-label-text { color:#fff; }
+.admin-label .section-icon { background:rgba(168,224,99,0.15); }
+.btn-admin-enter { background:rgba(255,255,255,0.12); color:#fff; border:1.5px solid rgba(255,255,255,0.2); font-family:'Syne',sans-serif; font-size:14px; font-weight:600; padding:12px 20px; border-radius:10px; cursor:pointer; width:100%; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:8px; }
+.btn-admin-enter:hover { background:rgba(255,255,255,0.2); transform:translateY(-2px); }
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(13,43,30,0.55); backdrop-filter:blur(6px); z-index:100; align-items:center; justify-content:center; padding:16px; }
+.modal-overlay.open { display:flex; animation:fadeIn 0.2s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.modal { background:#fff; border-radius:22px; width:100%; max-width:460px; overflow:hidden; animation:slideUp 0.32s cubic-bezier(0.22,1,0.36,1); max-height:92vh; overflow-y:auto; }
+@keyframes slideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.modal-header { background:linear-gradient(135deg,var(--green-deep),var(--green-mid)); padding:24px 28px 20px; position:relative; }
+.modal-header h2 { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:#fff; margin-bottom:3px; }
+.modal-header p { font-size:12.5px; color:rgba(255,255,255,0.5); }
+.modal-close { position:absolute; top:14px; right:14px; width:30px; height:30px; background:rgba(255,255,255,0.15); border:none; border-radius:50%; cursor:pointer; color:#fff; font-size:16px; display:flex; align-items:center; justify-content:center; }
+.modal-tabs { display:flex; border-bottom:1.5px solid var(--sand); background:var(--cream); }
+.tab-btn { flex:1; padding:13px; font-family:'Syne',sans-serif; font-size:13px; font-weight:600; border:none; background:transparent; cursor:pointer; color:var(--text-muted); transition:all 0.2s; border-bottom:2.5px solid transparent; margin-bottom:-1.5px; }
+.tab-btn.active { color:var(--green-bright); border-bottom-color:var(--green-bright); background:#fff; }
+.modal-body { padding:24px 28px; }
+.form-group { margin-bottom:16px; }
+.form-label { display:block; font-family:'Syne',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; }
+.form-input { width:100%; background:var(--cream); border:1.5px solid var(--sand); border-radius:10px; padding:11px 13px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text-main); outline:none; transition:border-color 0.2s; }
+.form-input:focus { border-color:var(--green-accent); background:#fff; }
+.form-input::placeholder { color:#a0b5a8; }
+.select-styled { -webkit-appearance:none; appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234a6b58' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 13px center; background-color:var(--cream); cursor:pointer; }
+.file-upload { display:block; width:100%; background:var(--cream); border:1.5px dashed var(--sand); border-radius:10px; padding:16px 14px; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text-muted); cursor:pointer; text-align:center; transition:border-color 0.2s,background 0.2s; }
+.file-upload:hover { border-color:var(--green-accent); background:#f0f9f4; }
+.file-upload input { display:none; }
+.file-name { font-size:12px; color:var(--green-bright); margin-top:5px; font-weight:500; }
+.form-hint { font-size:11.5px; color:var(--text-muted); margin-top:5px; line-height:1.5; }
+.modal-footer { padding:0 28px 24px; }
+.btn-modal { width:100%; padding:13px; border-radius:11px; font-family:'Syne',sans-serif; font-size:14px; font-weight:600; cursor:pointer; border:none; background:var(--green-bright); color:#fff; transition:all 0.2s; }
+.btn-modal:hover { background:var(--green-mid); transform:translateY(-1px); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.error-msg { color:var(--red); font-size:12px; margin-top:5px; display:none; }
+.toast-popup { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(16px); background:var(--green-deep); color:#f5f0e8; padding:12px 22px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:13.5px; z-index:999; box-shadow:0 8px 28px rgba(0,0,0,0.2); opacity:0; transition:all 0.4s cubic-bezier(0.22,1,0.36,1); white-space:nowrap; max-width:90vw; text-align:center; }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .page { grid-template-columns:1fr; min-height:auto; }
+  .left-panel { padding:48px 32px 36px; border-bottom:1px solid var(--sand); animation:fadeSlideLeft 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+  .right-panel { padding:36px 32px 52px; border-left:none; animation:none; opacity:1; }
+  .description { max-width:100%; font-size:15px; }
+}
+@media (max-width: 480px) {
+  .left-panel { padding:32px 18px 28px; }
+  .right-panel { padding:24px 18px 44px; }
+  h1 { font-size:28px; }
+  .badge { font-size:10px; padding:6px 12px; }
+  .description { font-size:14px; margin-bottom:28px; }
+  .stats { gap:16px; }
+  .stat-value { font-size:20px; }
+  .panel-title { font-size:22px; }
+  .section-card { padding:18px; }
+  .modal-overlay { align-items:flex-end; padding:0; }
+  .modal { border-bottom-left-radius:0; border-bottom-right-radius:0; max-height:95vh; border-radius:20px 20px 0 0; }
+  .modal-body { padding:20px 18px; }
+  .modal-footer { padding:0 18px 24px; }
+  .modal-header { padding:20px 18px 16px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="left-panel">
+    <div class="badge"><span class="badge-dot"></span>System Active</div>
+    <div class="logo-row">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+          <path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+        </svg>
+      </div>
+      <div class="logo-name">Eco<span>Track</span></div>
+    </div>
+    <h1>Smart <em>Waste</em><br>Management<br>System</h1>
+    <p class="description">A centralized platform designed to streamline waste collection, monitor disposal activities, and promote sustainable practices across barangays and communities. Real-time data. Cleaner neighborhoods. A greener future — together.</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-value">48</span><span class="stat-label">Barangays</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-value">1.2K</span><span class="stat-label">Reports Filed</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-value">96%</span><span class="stat-label">Collection Rate</span></div>
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="panel-heading">Get Started</div>
+    <div class="panel-title">Choose Your Access</div>
+    <p class="panel-sub">Select how you'd like to use the system — as a community member or as an administrator.</p>
+    <div class="section-card">
+      <div class="section-label"><div class="section-icon">🏘️</div><span>Community Member</span></div>
+      <select id="barangaySelect">
+        <option value="" disabled selected>— Select your Barangay / Location —</option>
+        <optgroup label="Zone A"><option value="Poblacion">Poblacion</option><option value="San Jose">San Jose</option><option value="San Pedro">San Pedro</option><option value="Sta. Cruz">Sta. Cruz</option></optgroup>
+        <optgroup label="Zone B"><option value="Bagong Bayan">Bagong Bayan</option><option value="Calaanan">Calaanan</option><option value="Mabuhay">Mabuhay</option><option value="Pag-asa">Pag-asa</option></optgroup>
+        <optgroup label="Zone C"><option value="Maliwanag">Maliwanag</option><option value="Masagana">Masagana</option><option value="Rizal">Rizal</option><option value="Sampaguita">Sampaguita</option></optgroup>
+      </select>
+      <button class="btn btn-primary" onclick="handleContinue()">Continue <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="divider"><div class="divider-line"></div><span class="divider-text">or</span><div class="divider-line"></div></div>
+    <div class="section-card admin-card">
+      <div class="section-label admin-label"><div class="section-icon">🔐</div><span class="admin-label-text">Administrator Access</span></div>
+      <p class="admin-desc">Manage schedules, review reports, oversee collection operations and configure system settings.</p>
+      <button class="btn-admin-enter" onclick="openAdminModal()"><svg width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M7.5 1a3.5 3.5 0 110 7 3.5 3.5 0 010-7zM2 13.5C2 11 4.5 9 7.5 9s5.5 2 5.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Proceed as Admin</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeAdminModal()">×</button>
+      <h2>Admin Portal</h2><p>Barangay officials only — verified access required</p>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchTab('login')">Log In</button>
+      <button class="tab-btn" onclick="switchTab('signup')">Create Account</button>
+    </div>
+    <div class="tab-panel active" id="tab-login">
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="loginEmail" placeholder="yourname@barangay.gov.ph" autocomplete="email"></div>
+        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPassword" placeholder="Enter your password" autocomplete="current-password"><div class="error-msg" id="loginError">Invalid email or password. Please try again.</div></div>
+      </div>
+      <div class="modal-footer"><button class="btn-modal" onclick="handleLogin()">Log In to Admin Panel</button></div>
+    </div>
+    <div class="tab-panel" id="tab-signup">
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="signupName" placeholder="e.g. Juan dela Cruz"></div>
+        <div class="form-group"><label class="form-label">Position / Title</label><input type="text" class="form-input" id="signupPosition" placeholder="e.g. Barangay Captain, Kagawad"></div>
+        <div class="form-group"><label class="form-label">Barangay</label>
+          <select class="form-input select-styled" id="signupBarangay">
+            <option value="" disabled selected>Select your barangay</option>
+            <option>Poblacion</option><option>San Jose</option><option>San Pedro</option><option>Sta. Cruz</option>
+            <option>Bagong Bayan</option><option>Calaanan</option><option>Mabuhay</option><option>Pag-asa</option>
+            <option>Maliwanag</option><option>Masagana</option><option>Rizal</option><option>Sampaguita</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="signupEmail" placeholder="yourname@barangay.gov.ph"></div>
+        <div class="form-group">
+          <label class="form-label">Proof of Office <span style="color:var(--red)">*</span></label>
+          <label class="file-upload"><input type="file" id="proofFile" accept=".pdf,.jpg,.jpeg,.png" onchange="updateFileName(this)">📎 Upload ID / Appointment Letter / Certificate<div class="file-name" id="fileName"></div></label>
+          <p class="form-hint">Accepted: PDF, JPG, PNG. Will be reviewed before account approval.</p>
+        </div>
+        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="signupPassword" placeholder="Create a strong password"></div>
+        <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" class="form-input" id="signupConfirm" placeholder="Repeat your password"><div class="error-msg" id="signupError">Passwords do not match.</div></div>
+      </div>
+      <div class="modal-footer"><button class="btn-modal" onclick="handleSignup()">Submit for Verification</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function handleContinue() {
+  const sel = document.getElementById('barangaySelect');
+  if (!sel.value) { sel.style.borderColor='#e05252'; sel.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:300}); setTimeout(()=>sel.style.borderColor='',900); return; }
+  sessionStorage.setItem('selectedBarangay', sel.value);
+  window.location.href = 'index.html';
+}
+function openAdminModal() { document.getElementById('adminModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeAdminModal() { document.getElementById('adminModal').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('adminModal').addEventListener('click', function(e){ if(e.target===this) closeAdminModal(); });
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',(i===0&&tab==='login')||(i===1&&tab==='signup')));
+  document.getElementById('tab-login').classList.toggle('active',tab==='login');
+  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
+}
+function updateFileName(input) { document.getElementById('fileName').textContent = input.files[0]?'✓ '+input.files[0].name:''; }
+function handleLogin() {
+  const email=document.getElementById('loginEmail').value.trim(), pass=document.getElementById('loginPassword').value, err=document.getElementById('loginError');
+  const accounts=JSON.parse(localStorage.getItem('adminAccounts')||'[]');
+  const match=accounts.find(a=>a.email===email&&a.password===pass&&a.approved);
+  if(match){sessionStorage.setItem('adminUser',JSON.stringify(match));window.location.href='admin.html';}
+  else{err.style.display='block';setTimeout(()=>err.style.display='none',3000);}
+}
+function handleSignup() {
+  const name=document.getElementById('signupName').value.trim(), position=document.getElementById('signupPosition').value.trim(),
+    barangay=document.getElementById('signupBarangay').value, email=document.getElementById('signupEmail').value.trim(),
+    password=document.getElementById('signupPassword').value, confirm=document.getElementById('signupConfirm').value,
+    file=document.getElementById('proofFile').files[0], err=document.getElementById('signupError');
+  if(!name||!position||!barangay||!email||!password||!file){err.textContent='Please fill in all fields and upload proof.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  if(password!==confirm){err.textContent='Passwords do not match.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  const accounts=JSON.parse(localStorage.getItem('adminAccounts')||'[]');
+  if(accounts.find(a=>a.email===email)){err.textContent='An account with this email already exists.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  accounts.push({name,position,barangay,email,password,approved:true});
+  localStorage.setItem('adminAccounts',JSON.stringify(accounts));
+  closeAdminModal(); showToast('✅ Account created! You can now log in.'); setTimeout(()=>switchTab('login'),600);
+}
+function showToast(msg) {
+  const t=document.createElement('div'); t.textContent=msg; t.className='toast-popup';
+  document.body.appendChild(t);
+  requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
+  setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},3200);
+}
+</script>
+</body>
+</html>
