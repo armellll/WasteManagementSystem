@@ -287,7 +287,7 @@ textarea.form-input { resize:vertical; min-height:75px; }
 const adminUser=JSON.parse(sessionStorage.getItem('adminUser')||'null');
 if(!adminUser){window.location.href='welcome.html';}
 else{document.getElementById('adminNameSidebar').textContent=adminUser.name;document.getElementById('adminRoleSidebar').textContent=adminUser.position+' — '+adminUser.barangay;}
-function logout(){sessionStorage.removeItem('adminUser');window.location.href='welcome.html';}
+function logout(){sessionStorage.removeItem('adminUser');window.location.href='index.html';}
 
 // Sidebar mobile
 function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('show');document.body.style.overflow='hidden';}
@@ -350,4 +350,5 @@ document.getElementById('modalOverlay').addEventListener('click',function(e){if(
 function showToast(msg){const t=document.createElement('div');t.textContent=msg;t.className='toast-popup';document.body.appendChild(t);requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},3000);}
 </script>
 </body>
+
 </html>
