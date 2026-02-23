@@ -214,7 +214,7 @@ function handleContinue() {
   const sel = document.getElementById('barangaySelect');
   if (!sel.value) { sel.style.borderColor='#e05252'; sel.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:300}); setTimeout(()=>sel.style.borderColor='',900); return; }
   sessionStorage.setItem('selectedBarangay', sel.value);
-  window.location.href = 'index.html';
+  window.location.href = 'mainSystem.html';
 }
 function openAdminModal() { document.getElementById('adminModal').classList.add('open'); document.body.style.overflow='hidden'; }
 function closeAdminModal() { document.getElementById('adminModal').classList.remove('open'); document.body.style.overflow=''; }
@@ -254,3 +254,4 @@ function showToast(msg) {
 </script>
 </body>
 </html>
+
