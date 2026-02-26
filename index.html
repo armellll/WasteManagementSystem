@@ -183,9 +183,47 @@ select:focus { border-color:var(--green-accent); }
       <div class="modal-body">
         <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="uLoginEmail" placeholder="your@email.com" autocomplete="email"></div>
         <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="uLoginPass" placeholder="Your password" autocomplete="current-password"><div class="error-msg" id="uLoginErr">Invalid email or password.</div></div>
-        <span class="forgot-link" onclick="showForgot()">Forgot password?</span>
+        <span class="forgot-link" onclick="showForgotPanel()">Forgot password?</span>
       </div>
       <div class="modal-footer"><button class="btn-modal" onclick="handleUserLogin()">Log In</button></div>
+    </div>
+
+    <!-- FORGOT PASSWORD PANEL (hidden by default, replaces login view) -->
+    <div class="tab-panel" id="utab-forgot">
+      <div class="modal-body">
+        <!-- Step 1: Enter email -->
+        <div id="forgotStep1">
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.6">Enter the email address linked to your account. We'll verify your identity using the phone number you registered.</p>
+          <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="forgotEmail" placeholder="your@email.com"></div>
+          <div class="error-msg" id="forgotEmailErr" style="display:none">No account found with this email in the selected barangay.</div>
+        </div>
+        <!-- Step 2: Verify phone -->
+        <div id="forgotStep2" style="display:none">
+          <div style="background:rgba(76,175,120,0.08);border:1.5px solid rgba(76,175,120,0.2);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--text-muted);line-height:1.6">
+            ✅ Account found! Enter the last 4 digits of the phone number you registered with to verify it's you.
+          </div>
+          <div class="form-group"><label class="form-label">Last 4 Digits of Phone Number</label><input type="tel" class="form-input" id="forgotPhone" placeholder="e.g. 1234" maxlength="4" style="letter-spacing:0.2em;font-size:18px;text-align:center"></div>
+          <div class="error-msg" id="forgotPhoneErr" style="display:none">Incorrect. Please check the phone number you used during sign-up.</div>
+        </div>
+        <!-- Step 3: Set new password -->
+        <div id="forgotStep3" style="display:none">
+          <div style="background:rgba(76,175,120,0.08);border:1.5px solid rgba(76,175,120,0.2);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--text-muted)">
+            ✅ Identity verified! Set your new password below.
+          </div>
+          <div class="form-group">
+            <label class="form-label">New Password</label>
+            <input type="password" class="form-input" id="forgotNewPass" placeholder="Min. 8 characters" oninput="checkPwStrength2(this.value)">
+            <div class="pw-strength"><div class="pw-bar" id="pwBar2"></div></div>
+            <div class="pw-label" id="pwLabel2"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Confirm New Password</label><input type="password" class="form-input" id="forgotConfirmPass" placeholder="Repeat new password"></div>
+          <div class="error-msg" id="forgotPassErr" style="display:none">Passwords do not match or too short.</div>
+        </div>
+        <span class="forgot-link" onclick="backToLogin()" style="margin-top:4px;display:block">← Back to login</span>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal" id="forgotNextBtn" onclick="handleForgotNext()">Continue →</button>
+      </div>
     </div>
     <!-- SIGNUP -->
     <div class="tab-panel" id="utab-signup">
@@ -351,7 +389,86 @@ function handleAdminSignup(){
 }
 
 function updateFileName(input,id){document.getElementById(id).textContent=input.files[0]?'✓ '+input.files[0].name:'';}
-function showForgot(){showToast('📧 Password reset is handled by your barangay admin.');}
+// ── Forgot Password Flow ─────────────────────────────────
+let forgotUser = null;
+let forgotBarangay = null;
+let forgotStep = 1;
+
+function showForgotPanel() {
+  forgotUser = null; forgotStep = 1;
+  document.getElementById('forgotEmail').value = '';
+  document.getElementById('forgotPhone').value = '';
+  document.getElementById('forgotNewPass').value = '';
+  document.getElementById('forgotConfirmPass').value = '';
+  ['forgotEmailErr','forgotPhoneErr','forgotPassErr'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById('forgotStep1').style.display = 'block';
+  document.getElementById('forgotStep2').style.display = 'none';
+  document.getElementById('forgotStep3').style.display = 'none';
+  document.getElementById('forgotNextBtn').textContent = 'Continue →';
+  document.querySelectorAll('#userModal .tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('utab-forgot').classList.add('active');
+  document.querySelector('#userModal .modal-tabs').style.display = 'none';
+}
+
+function backToLogin() {
+  document.querySelectorAll('#userModal .tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('utab-login').classList.add('active');
+  document.querySelector('#userModal .modal-tabs').style.display = 'flex';
+  document.querySelectorAll('#userModal .tab-btn').forEach((b,i) => b.classList.toggle('active', i === 0));
+}
+
+function handleForgotNext() {
+  if (forgotStep === 1) {
+    const b = getBarangay();
+    const email = document.getElementById('forgotEmail').value.trim().toLowerCase();
+    const err = document.getElementById('forgotEmailErr');
+    if (!email) { err.textContent = 'Please enter your email address.'; err.style.display = 'block'; return; }
+    if (!b) { err.textContent = 'Please go back and select your barangay first.'; err.style.display = 'block'; return; }
+    const users = JSON.parse(localStorage.getItem(bkey(b, 'users')) || '[]');
+    const match = users.find(u => u.email.toLowerCase() === email);
+    if (!match) { err.textContent = 'No account found with this email in the selected barangay.'; err.style.display = 'block'; return; }
+    err.style.display = 'none';
+    forgotUser = match; forgotBarangay = b; forgotStep = 2;
+    document.getElementById('forgotStep1').style.display = 'none';
+    document.getElementById('forgotStep2').style.display = 'block';
+    document.getElementById('forgotNextBtn').textContent = 'Verify →';
+
+  } else if (forgotStep === 2) {
+    const input = document.getElementById('forgotPhone').value.trim();
+    const err = document.getElementById('forgotPhoneErr');
+    const phone = (forgotUser.phone || '').replace(/\D/g, '');
+    const last4 = phone.slice(-4);
+    if (!input || input !== last4) { err.style.display = 'block'; return; }
+    err.style.display = 'none';
+    forgotStep = 3;
+    document.getElementById('forgotStep2').style.display = 'none';
+    document.getElementById('forgotStep3').style.display = 'block';
+    document.getElementById('forgotNextBtn').textContent = 'Reset Password';
+
+  } else if (forgotStep === 3) {
+    const newPass = document.getElementById('forgotNewPass').value;
+    const confirm = document.getElementById('forgotConfirmPass').value;
+    const err = document.getElementById('forgotPassErr');
+    if (!newPass || newPass.length < 8 || newPass !== confirm) { err.textContent = 'Passwords do not match or are less than 8 characters.'; err.style.display = 'block'; return; }
+    err.style.display = 'none';
+    const users = JSON.parse(localStorage.getItem(bkey(forgotBarangay, 'users')) || '[]');
+    const idx = users.findIndex(u => u.id === forgotUser.id);
+    if (idx >= 0) { users[idx].password = newPass; localStorage.setItem(bkey(forgotBarangay, 'users'), JSON.stringify(users)); }
+    backToLogin();
+    document.getElementById('uLoginEmail').value = forgotUser.email;
+    showToast('\u2705 Password reset! You can now log in with your new password.');
+  }
+}
+
+function checkPwStrength2(pw) {
+  const bar = document.getElementById('pwBar2'), lbl = document.getElementById('pwLabel2');
+  let score = 0;
+  if (pw.length >= 8) score++; if (pw.length >= 12) score++;
+  if (/[A-Z]/.test(pw)) score++; if (/[0-9]/.test(pw)) score++; if (/[^A-Za-z0-9]/.test(pw)) score++;
+  const levels = [['', 0, ''],['Very Weak', 20, '#e05252'],['Weak', 40, '#e8874a'],['Fair', 60, '#f0c040'],['Strong', 80, '#4caf78'],['Very Strong', 100, '#2d7a4f']];
+  const l = levels[score] || levels[0];
+  bar.style.width = l[1] + '%'; bar.style.background = l[2]; lbl.textContent = l[0]; lbl.style.color = l[2];
+}
 function showToast(msg){
   const t=document.createElement('div'); t.textContent=msg; t.className='toast-popup';
   document.body.appendChild(t);
