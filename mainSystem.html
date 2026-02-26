@@ -16,31 +16,25 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; }
 body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:0; background-image:radial-gradient(circle at 10% 20%,rgba(76,175,120,0.08) 0%,transparent 40%),radial-gradient(circle at 90% 80%,rgba(168,224,99,0.07) 0%,transparent 40%); }
-
 /* NAVBAR */
-.navbar { position:sticky; top:0; z-index:50; background:rgba(245,240,232,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--sand); padding:0 28px; display:flex; align-items:center; justify-content:space-between; height:60px; gap:10px; }
+.navbar { position:sticky; top:0; z-index:50; background:rgba(245,240,232,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--sand); padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:60px; gap:10px; }
 .nav-logo { display:flex; align-items:center; gap:9px; text-decoration:none; flex-shrink:0; }
 .nav-logo-icon { width:32px; height:32px; background:var(--green-bright); border-radius:9px; display:flex; align-items:center; justify-content:center; }
 .nav-logo-icon svg { width:16px; height:16px; }
 .nav-logo-name { font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:var(--green-deep); }
 .nav-logo-name span { color:var(--green-bright); }
-.nav-center { display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
-.nav-center::-webkit-scrollbar { display:none; }
+.nav-center { display:flex; align-items:center; gap:2px; }
 .nav-link { font-family:'Syne',sans-serif; font-size:12.5px; font-weight:600; color:var(--text-muted); padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.18s; text-decoration:none; border:none; background:transparent; white-space:nowrap; }
-.nav-link:hover,.nav-link.active { background:var(--green-bright); color:#fff; }
+.nav-link:hover, .nav-link.active { background:var(--green-bright); color:#fff; }
 .nav-right { display:flex; align-items:center; gap:8px; flex-shrink:0; }
-.barangay-badge { background:var(--green-mid); color:var(--lime); font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; padding:5px 10px; border-radius:100px; white-space:nowrap; }
+.user-chip { display:flex; align-items:center; gap:7px; background:#fff; border:1.5px solid var(--sand); border-radius:100px; padding:4px 12px 4px 6px; font-size:12.5px; color:var(--green-deep); font-weight:500; }
+.user-avatar { width:24px; height:24px; background:var(--green-bright); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; color:#fff; font-weight:700; flex-shrink:0; }
 .btn-report { background:var(--orange); color:#fff; border:none; padding:7px 14px; border-radius:9px; font-family:'Syne',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
-.btn-report:hover { background:#d4743a; }
-#schedulePage, #tipPage, #reportPage { scroll-margin-top: 80px;}
-
-/* Mobile menu toggle */
+.btn-logout-nav { background:transparent; color:var(--text-muted); border:1.5px solid var(--sand); padding:6px 12px; border-radius:9px; font-family:'Syne',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+.btn-logout-nav:hover { border-color:var(--red); color:var(--red); }
 .menu-toggle { display:none; background:none; border:none; cursor:pointer; padding:6px; color:var(--green-deep); }
-.nav-mobile-drawer { display:none; }
-
 /* MAIN */
 .main { position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:24px 24px 60px; }
-
 /* HERO */
 .hero-strip { background:linear-gradient(135deg,var(--green-deep) 0%,var(--green-mid) 100%); border-radius:20px; padding:28px 32px; margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; gap:20px; overflow:hidden; position:relative; animation:fadeDown 0.6s cubic-bezier(0.22,1,0.36,1) both; }
 @keyframes fadeDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
@@ -53,12 +47,10 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .hero-stat { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:12px 16px; text-align:center; min-width:80px; }
 .hero-stat-val { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:#fff; line-height:1; }
 .hero-stat-lbl { font-size:10px; color:rgba(255,255,255,0.5); margin-top:3px; }
-
-/* GRID LAYOUTS */
+/* GRIDS */
 .grid-main { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:16px; }
 .grid-wide { display:grid; grid-template-columns:1.5fr 1fr; gap:16px; margin-bottom:16px; }
 .grid-half { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
-
 /* CARD */
 .card { background:#fff; border:1.5px solid var(--sand); border-radius:18px; overflow:hidden; transition:box-shadow 0.2s,border-color 0.2s; animation:fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both; }
 .card:hover { box-shadow:0 6px 28px rgba(13,43,30,0.08); border-color:#d5cdb8; }
@@ -74,7 +66,6 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .badge-orange { background:rgba(232,135,74,0.12); color:var(--orange); }
 .badge-blue { background:rgba(74,127,181,0.12); color:var(--blue); }
 .badge-red { background:rgba(224,82,82,0.12); color:var(--red); }
-
 /* ANNOUNCEMENTS */
 .announcement-item { padding:12px 0; border-bottom:1px solid var(--sand); }
 .announcement-item:last-child { border-bottom:none; padding-bottom:0; }
@@ -83,7 +74,6 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .ann-date { font-size:10.5px; color:var(--text-muted); flex-shrink:0; margin-top:2px; }
 .ann-body { font-size:12.5px; color:var(--text-muted); line-height:1.6; }
 .ann-tag { display:inline-block; margin-top:5px; font-size:10px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:3px 7px; border-radius:6px; }
-
 /* SCHEDULE */
 .schedule-row { display:flex; align-items:center; padding:10px 0; border-bottom:1px solid var(--sand); gap:10px; }
 .schedule-row:last-child { border-bottom:none; padding-bottom:0; }
@@ -92,14 +82,12 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .schedule-fill { height:100%; border-radius:100px; }
 .schedule-type { font-size:11px; color:var(--text-muted); text-align:right; width:88px; flex-shrink:0; }
 .schedule-status { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-
 /* TIPS */
 .tip-item { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--sand); }
 .tip-item:last-child { border-bottom:none; padding-bottom:0; }
 .tip-emoji { font-size:20px; flex-shrink:0; }
 .tip-title { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--green-deep); margin-bottom:2px; }
 .tip-text { font-size:12.5px; color:var(--text-muted); line-height:1.6; }
-
 /* REPORT CARD */
 .report-card { background:linear-gradient(135deg,#e8874a 0%,#d4673a 100%); border:none; cursor:default; }
 .report-card:hover { box-shadow:0 8px 28px rgba(232,135,74,0.28); border-color:transparent; }
@@ -107,12 +95,10 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .report-cta h3 { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:#fff; margin-bottom:5px; }
 .report-cta p { font-size:12.5px; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:14px; }
 .btn-report-big { background:#fff; color:var(--orange); border:none; padding:10px 18px; border-radius:9px; font-family:'Syne',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s; width:100%; }
-.btn-report-big:hover { background:#fff9f5; }
-.recent-reports-box { margin:0 20px 20px; background:rgba(255,255,255,0.13); border-radius:11px; padding:12px 14px; }
+.rr-box { margin:0 20px 20px; background:rgba(255,255,255,0.13); border-radius:11px; padding:12px 14px; }
 .rr-label { font-size:10px; color:rgba(255,255,255,0.55); letter-spacing:0.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px; }
 .rr-list { font-size:12px; color:rgba(255,255,255,0.8); line-height:2; }
-
-/* TRUCK STATUS */
+/* TRUCK */
 .status-truck { display:flex; align-items:center; gap:12px; padding:12px; background:var(--cream); border-radius:12px; margin-bottom:10px; }
 .status-truck:last-child { margin-bottom:0; }
 .truck-icon { font-size:24px; flex-shrink:0; }
@@ -121,24 +107,21 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .truck-time { font-size:11.5px; color:var(--text-muted); margin-top:1px; }
 .truck-progress { margin-top:6px; height:5px; background:var(--sand); border-radius:100px; overflow:hidden; }
 .truck-fill { height:100%; background:var(--green-accent); border-radius:100px; }
-
 /* MINI STATS */
 .mini-stat { text-align:center; padding:14px 8px; }
 .mini-stat-val { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; line-height:1; }
 .mini-stat-lbl { font-size:11px; color:var(--text-muted); margin-top:4px; }
-
 /* SEGREGATION */
 .seg-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .seg-item { border-radius:13px; padding:13px; }
 .seg-item-title { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--green-deep); margin:6px 0 3px; }
 .seg-item-text { font-size:11px; color:var(--text-muted); line-height:1.55; }
 .seg-day { display:inline-block; margin-top:7px; font-size:10px; font-weight:600; padding:2px 7px; border-radius:5px; }
-
-/* MODAL */
+/* REPORT MODAL */
 .modal-overlay { display:none; position:fixed; inset:0; background:rgba(13,43,30,0.55); backdrop-filter:blur(6px); z-index:100; align-items:center; justify-content:center; padding:16px; }
 .modal-overlay.open { display:flex; animation:fadeIn 0.2s ease; }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal { background:#fff; border-radius:20px; width:100%; max-width:420px; overflow:hidden; animation:slideUp 0.3s cubic-bezier(0.22,1,0.36,1); max-height:90vh; overflow-y:auto; }
+.modal { background:#fff; border-radius:20px; width:100%; max-width:460px; overflow:hidden; animation:slideUp 0.3s cubic-bezier(0.22,1,0.36,1); max-height:92vh; overflow-y:auto; }
 @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .modal-hdr { background:linear-gradient(135deg,var(--orange),#d4673a); padding:20px 24px 16px; position:relative; }
 .modal-hdr h2 { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:#fff; }
@@ -150,172 +133,132 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .form-input2 { width:100%; background:var(--cream); border:1.5px solid var(--sand); border-radius:9px; padding:10px 12px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text-main); outline:none; transition:border-color 0.2s; }
 .form-input2:focus { border-color:var(--orange); background:#fff; }
 textarea.form-input2 { resize:vertical; min-height:80px; }
+/* Photo upload */
+.photo-upload { display:block; width:100%; background:var(--cream); border:1.5px dashed var(--sand); border-radius:9px; padding:14px; text-align:center; cursor:pointer; transition:border-color 0.2s,background 0.2s; font-size:13px; color:var(--text-muted); }
+.photo-upload:hover { border-color:var(--orange); background:#fff9f6; }
+.photo-upload input { display:none; }
+.photo-preview { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.photo-thumb { width:64px; height:64px; border-radius:8px; object-fit:cover; border:1.5px solid var(--sand); }
+.photo-count { font-size:11.5px; color:var(--green-bright); margin-top:4px; font-weight:600; }
+/* Rate limit warning */
+.rate-warn { background:rgba(232,135,74,0.1); border:1px solid rgba(232,135,74,0.3); border-radius:9px; padding:10px 12px; font-size:12.5px; color:#c0601a; display:none; }
+.reporter-info { background:var(--cream); border-radius:9px; padding:10px 12px; font-size:12.5px; color:var(--text-muted); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.reporter-avatar { width:28px; height:28px; background:var(--green-bright); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; color:#fff; font-weight:700; flex-shrink:0; }
 .btn-submit { width:100%; padding:12px; background:var(--orange); color:#fff; border:none; border-radius:9px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.2s; margin-top:4px; }
 .btn-submit:hover { background:#d4673a; }
+.btn-submit:disabled { background:#ccc; cursor:not-allowed; }
 .toast-popup { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(16px); background:var(--green-deep); color:#f5f0e8; padding:12px 20px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:13px; z-index:999; box-shadow:0 6px 24px rgba(0,0,0,0.2); opacity:0; transition:all 0.4s cubic-bezier(0.22,1,0.36,1); white-space:nowrap; max-width:90vw; text-align:center; }
 .page-footer { border-top:1.5px solid var(--sand); padding:20px 28px; display:flex; align-items:center; justify-content:space-between; gap:12px; background:#fff; flex-wrap:wrap; }
 .footer-logo { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--green-deep); }
 .footer-logo span { color:var(--green-bright); }
 .footer-note { font-size:11.5px; color:var(--text-muted); }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .grid-main { grid-template-columns:1fr 1fr; }
-  .grid-wide { grid-template-columns:1fr; }
+/* RESPONSIVE */
+@media (max-width:1024px) { .grid-main{grid-template-columns:1fr 1fr} .grid-wide{grid-template-columns:1fr} }
+@media (max-width:768px) {
+  .navbar{padding:0 16px;height:56px}
+  .nav-center{display:none}
+  .nav-center.open{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--sand);padding:12px 16px 16px;gap:4px;z-index:49}
+  .nav-link{padding:10px 14px;border-radius:10px;font-size:14px}
+  .menu-toggle{display:flex;align-items:center;justify-content:center}
+  .main{padding:16px 14px 48px}
+  .hero-strip{flex-direction:column;align-items:flex-start;padding:22px 20px;gap:16px}
+  .hero-stats{width:100%;justify-content:space-between}
+  .hero-stat{flex:1}
+  .grid-main{grid-template-columns:1fr}
+  .grid-wide{grid-template-columns:1fr}
+  .grid-half{grid-template-columns:1fr}
+  .modal-overlay{align-items:flex-end;padding:0}
+  .modal{border-radius:20px 20px 0 0;max-height:95vh}
+  .modal-bdy{padding:18px}
+  .user-chip span { display:none; }
 }
-@media (max-width: 768px) {
-  .navbar { padding:0 16px; height:56px; }
-  .nav-center { display:none; }
-  .nav-center.open { display:flex; flex-direction:column; position:fixed; top:56px; left:0; right:0; background:rgba(245,240,232,0.98); backdrop-filter:blur(12px); border-bottom:1px solid var(--sand); padding:12px 16px 16px; gap:4px; z-index:49; animation:fadeDown2 0.2s ease; }
-  @keyframes fadeDown2{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-  .nav-link { padding:10px 14px; border-radius:10px; font-size:14px; }
-  .menu-toggle { display:flex; align-items:center; justify-content:center; }
-  .main { padding:16px 14px 48px; }
-  .hero-strip { flex-direction:column; align-items:flex-start; padding:22px 20px; gap:16px; }
-  .hero-stats { width:100%; justify-content:space-between; }
-  .hero-stat { flex:1; }
-  .grid-main { grid-template-columns:1fr; }
-  .grid-wide { grid-template-columns:1fr; }
-  .grid-half { grid-template-columns:1fr; }
-  .seg-grid { grid-template-columns:1fr 1fr; }
-  .modal-overlay { align-items:flex-end; padding:0; }
-  .modal { border-radius:20px 20px 0 0; max-height:95vh; }
-  .modal-bdy { padding:18px 18px; }
-}
-@media (max-width: 480px) {
-  .barangay-badge { display:none; }
-  .hero-stat-val { font-size:18px; }
-  .hero-stat-lbl { font-size:9px; }
-  .mini-stat-val { font-size:24px; }
-  .seg-grid { grid-template-columns:1fr 1fr; }
-  .page-footer { flex-direction:column; text-align:center; padding:16px; }
+@media (max-width:480px) {
+  .hero-stat-val{font-size:18px}
+  .seg-grid{grid-template-columns:1fr 1fr}
+  .page-footer{flex-direction:column;text-align:center;padding:16px}
 }
 </style>
 </head>
 <body>
-
 <nav class="navbar">
-  <a class="nav-logo" href="mainSystem.html">
+  <a class="nav-logo" href="index.html">
     <div class="nav-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></div>
     <span class="nav-logo-name">Eco<span>Track</span></span>
   </a>
   <div class="nav-center" id="navCenter">
-    <a class="nav-link active" href="index.html">Dashboard</a>
-    <a class="nav-link" href="#schedulePage">Schedule</a>
-    <a class="nav-link" href="#reportPage">Reports</a>
-    <a class="nav-link" href="#tipPage">Tips</a>
+    <a class="nav-link active" href="#">Dashboard</a>
+    <a class="nav-link" href="#">Schedule</a>
+    <a class="nav-link" href="#">Reports</a>
+    <a class="nav-link" href="#">Tips</a>
   </div>
   <div class="nav-right">
-    <div class="barangay-badge" id="barangayBadge">📍 ...</div>
+    <div class="user-chip" id="userChip"><div class="user-avatar" id="userAvatarNav">?</div><span id="userNameNav">Loading...</span></div>
     <button class="btn-report" onclick="openReportModal()">🚨 Report</button>
-    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Menu">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </button>
+    <button class="btn-logout-nav" onclick="doLogout()">← Out</button>
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
   </div>
 </nav>
 
 <div class="main">
-
-  <!-- HERO -->
   <div class="hero-strip">
     <div>
-      <div class="hero-greeting">Welcome back, Community Member</div>
-      <div class="hero-title">Keeping <span id="heroBarangay">Your Barangay</span> Clean 🌿</div>
+      <div class="hero-greeting" id="heroGreeting">Welcome back!</div>
+      <div class="hero-title">Keeping <span id="heroBarangay">—</span> Clean 🌿</div>
       <div class="hero-date" id="heroDate"></div>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-val">✅</div><div class="hero-stat-lbl">On Schedule</div></div>
-      <div class="hero-stat"><div class="hero-stat-val" id="heroPercent">96%</div><div class="hero-stat-lbl">Collection Rate</div></div>
-      <div class="hero-stat"><div class="hero-stat-val" id="heroReports">—</div><div class="hero-stat-lbl">Reports Open</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">96%</div><div class="hero-stat-lbl">Collection Rate</div></div>
+      <div class="hero-stat"><div class="hero-stat-val" id="heroReports">0</div><div class="hero-stat-lbl">Reports Open</div></div>
     </div>
   </div>
 
-  <!-- ROW 1: Announcements + Report -->
   <div class="grid-wide">
     <div class="card">
-      <div class="card-header">
-        <div class="card-title-row"><div class="card-icon" style="background:rgba(74,127,181,0.12)">📢</div><span class="card-title">Announcements</span></div>
-        <span class="badge-sm badge-blue" id="announcementCount">Active</span>
-      </div>
+      <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(74,127,181,0.12)">📢</div><span class="card-title">Announcements</span></div><span class="badge-sm badge-blue" id="annCount">Active</span></div>
       <div class="card-body" id="announcementsContainer"></div>
     </div>
-    <div class="card report-card" id="reportPage">
-      <div class="report-cta">
-        <h3>🚨 Spot a Problem?</h3>
-        <p>Illegal dumping, missed collection, or overflowing bins? Let us know and we'll act on it fast.</p>
-        <button class="btn-report-big" onclick="openReportModal()">Submit a Report</button>
-      </div>
-      <div class="recent-reports-box">
-        <div class="rr-label">Recent Reports</div>
-        <div class="rr-list" id="recentReports"><span style="opacity:0.5">No reports yet</span></div>
-      </div>
+    <div class="card report-card">
+      <div class="report-cta"><h3>🚨 Spot a Problem?</h3><p>Illegal dumping, missed collection, or overflowing bins? File a verified report.</p><button class="btn-report-big" onclick="openReportModal()">Submit a Report</button></div>
+      <div class="rr-box"><div class="rr-label">Recent Reports</div><div class="rr-list" id="recentReports"></div></div>
     </div>
   </div>
 
-  <!-- ROW 2: Schedule + Trucks + Stats -->
-  <div class="grid-main" id="schedulePage">
+  <div class="grid-main">
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(76,175,120,0.12)">🗓️</div><span class="card-title">Collection Schedule</span></div><span class="badge-sm badge-green">This Week</span></div>
       <div class="card-body" id="scheduleContainer"></div>
     </div>
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(168,224,99,0.15)">🚛</div><span class="card-title">Live Truck Status</span></div><span class="badge-sm badge-green">Active</span></div>
-      <div class="card-body">
-        <div class="status-truck"><span class="truck-icon">🚚</span><div class="truck-info"><div class="truck-route">Truck #1 — Zone A</div><div class="truck-time">ETA ~25 mins</div><div class="truck-progress"><div class="truck-fill" style="width:65%"></div></div></div></div>
-        <div class="status-truck"><span class="truck-icon">🚚</span><div class="truck-info"><div class="truck-route">Truck #2 — Zone B</div><div class="truck-time">Completed ✓</div><div class="truck-progress"><div class="truck-fill" style="width:100%;background:var(--lime)"></div></div></div></div>
-        <div class="status-truck"><span class="truck-icon">🚚</span><div class="truck-info"><div class="truck-route">Truck #3 — Zone C</div><div class="truck-time">Starting at 2:00 PM</div><div class="truck-progress"><div class="truck-fill" style="width:15%"></div></div></div></div>
-      </div>
+      <div class="card-body" id="truckContainer"></div>
     </div>
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(139,111,181,0.12)">📊</div><span class="card-title">This Month</span></div></div>
-      <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+      <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr">
         <div class="mini-stat"><div class="mini-stat-val" style="color:var(--green-bright)">24</div><div class="mini-stat-lbl">Collections</div></div>
-        <div class="mini-stat"><div class="mini-stat-val" style="color:var(--orange)">3</div><div class="mini-stat-lbl">Issues Resolved</div></div>
+        <div class="mini-stat"><div class="mini-stat-val" style="color:var(--orange)" id="resolvedCount">0</div><div class="mini-stat-lbl">Issues Resolved</div></div>
         <div class="mini-stat"><div class="mini-stat-val" style="color:var(--blue)">1.8T</div><div class="mini-stat-lbl">Waste Collected</div></div>
         <div class="mini-stat"><div class="mini-stat-val" style="color:var(--purple)">68%</div><div class="mini-stat-lbl">Recycled</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ROW 3: Segregation + Tips -->
-  <div class="grid-half" id="tipPage">
+  <div class="grid-half">
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(232,135,74,0.12)">♻️</div><span class="card-title">Segregation Guide</span></div></div>
-      <div class="card-body">
-        <div class="seg-grid">
-          <div class="seg-item" style="background:#f0fdf4;border:1.5px solid #bbf7d0">
-            <div style="font-size:20px">🟢</div>
-            <div class="seg-item-title">Biodegradable</div>
-            <div class="seg-item-text">Food scraps, leaves, vegetable peels</div>
-            <span class="seg-day" style="background:rgba(76,175,120,0.12);color:var(--green-bright)">Mon & Thu</span>
-          </div>
-          <div class="seg-item" style="background:#eff6ff;border:1.5px solid #bfdbfe">
-            <div style="font-size:20px">🔵</div>
-            <div class="seg-item-title">Recyclable</div>
-            <div class="seg-item-text">Paper, plastic, glass, metals</div>
-            <span class="seg-day" style="background:rgba(74,127,181,0.12);color:var(--blue)">Tue & Fri</span>
-          </div>
-          <div class="seg-item" style="background:#fff5f5;border:1.5px solid #fecaca">
-            <div style="font-size:20px">🔴</div>
-            <div class="seg-item-title">Residual</div>
-            <div class="seg-item-text">Non-recyclable, contaminated</div>
-            <span class="seg-day" style="background:rgba(224,82,82,0.1);color:var(--red)">Wednesday</span>
-          </div>
-          <div class="seg-item" style="background:#fdf4ff;border:1.5px solid #e9d5ff">
-            <div style="font-size:20px">⚠️</div>
-            <div class="seg-item-title">Special Waste</div>
-            <div class="seg-item-text">Batteries, e-waste, chemicals</div>
-            <span class="seg-day" style="background:rgba(139,111,181,0.1);color:var(--purple)">Drop-off only</span>
-          </div>
-        </div>
-      </div>
+      <div class="card-body"><div class="seg-grid">
+        <div class="seg-item" style="background:#f0fdf4;border:1.5px solid #bbf7d0"><div style="font-size:20px">🟢</div><div class="seg-item-title">Biodegradable</div><div class="seg-item-text">Food scraps, leaves, peels</div><span class="seg-day" style="background:rgba(76,175,120,0.12);color:var(--green-bright)">Mon & Thu</span></div>
+        <div class="seg-item" style="background:#eff6ff;border:1.5px solid #bfdbfe"><div style="font-size:20px">🔵</div><div class="seg-item-title">Recyclable</div><div class="seg-item-text">Paper, plastic, glass, metals</div><span class="seg-day" style="background:rgba(74,127,181,0.12);color:var(--blue)">Tue & Fri</span></div>
+        <div class="seg-item" style="background:#fff5f5;border:1.5px solid #fecaca"><div style="font-size:20px">🔴</div><div class="seg-item-title">Residual</div><div class="seg-item-text">Non-recyclable, contaminated</div><span class="seg-day" style="background:rgba(224,82,82,0.1);color:var(--red)">Wednesday</span></div>
+        <div class="seg-item" style="background:#fdf4ff;border:1.5px solid #e9d5ff"><div style="font-size:20px">⚠️</div><div class="seg-item-title">Special Waste</div><div class="seg-item-text">Batteries, e-waste, chemicals</div><span class="seg-day" style="background:rgba(139,111,181,0.1);color:var(--purple)">Drop-off only</span></div>
+      </div></div>
     </div>
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(168,224,99,0.15)">🌱</div><span class="card-title">Eco Tips</span></div><span class="badge-sm badge-green">Daily</span></div>
       <div class="card-body" id="ecoTipsContainer"></div>
     </div>
   </div>
-
 </div>
 
 <footer class="page-footer">
@@ -326,9 +269,15 @@ textarea.form-input2 { resize:vertical; min-height:80px; }
 <!-- REPORT MODAL -->
 <div class="modal-overlay" id="reportModal">
   <div class="modal">
-    <div class="modal-hdr"><button class="modal-close2" onclick="closeReportModal()">×</button><h2>🚨 Report an Issue</h2><p>Help us keep your barangay clean</p></div>
+    <div class="modal-hdr"><button class="modal-close2" onclick="closeReportModal()">×</button><h2>🚨 Report an Issue</h2><p id="reportModalSub">Verified report — your identity is recorded</p></div>
     <div class="modal-bdy">
-      <div class="form-group2"><label class="form-label2">Issue Type</label>
+      <div class="reporter-info" id="reporterInfo">
+        <div class="reporter-avatar" id="reporterAvatar">?</div>
+        <div><strong id="reporterName">Loading...</strong><br><span id="reporterBarangay" style="font-size:11px">—</span></div>
+      </div>
+      <div class="rate-warn" id="rateWarn">⚠️ You've submitted too many reports recently. Please wait before submitting again.</div>
+      <div class="form-group2">
+        <label class="form-label2">Issue Type</label>
         <select class="form-input2" id="reportType" style="-webkit-appearance:none;appearance:none;background-image:url('data:image/svg+xml,%3Csvg width=\'16\' height=\'16\' viewBox=\'0 0 16 16\' fill=\'none\'%3E%3Cpath d=\'M4 6l4 4 4-4\' stroke=\'%234a6b58\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 12px center;">
           <option value="">Select issue type...</option>
           <option>Missed garbage collection</option><option>Illegal dumping / littering</option>
@@ -337,52 +286,145 @@ textarea.form-input2 { resize:vertical; min-height:80px; }
         </select>
       </div>
       <div class="form-group2"><label class="form-label2">Location / Address</label><input type="text" class="form-input2" id="reportLocation" placeholder="e.g. Near Purok 3 waiting shed"></div>
-      <div class="form-group2"><label class="form-label2">Description</label><textarea class="form-input2" id="reportDesc" placeholder="Describe the issue..."></textarea></div>
-      <div class="form-group2"><label class="form-label2">Your Name (Optional)</label><input type="text" class="form-input2" id="reportName" placeholder="Anonymous if left blank"></div>
-      <button class="btn-submit" onclick="submitReport()">Submit Report</button>
+      <div class="form-group2"><label class="form-label2">Description</label><textarea class="form-input2" id="reportDesc" placeholder="Describe the issue in detail..."></textarea></div>
+      <div class="form-group2">
+        <label class="form-label2">Photo Evidence <span style="color:var(--green-bright);font-size:9px;letter-spacing:0;text-transform:none">(Strongly recommended — helps prevent false reports)</span></label>
+        <label class="photo-upload">
+          <input type="file" id="reportPhotos" accept="image/*" multiple onchange="previewPhotos(this)">
+          📸 Tap to attach photos (max 3)
+        </label>
+        <div class="photo-preview" id="photoPreview"></div>
+        <div class="photo-count" id="photoCount"></div>
+      </div>
+      <button class="btn-submit" id="submitReportBtn" onclick="submitReport()">Submit Verified Report</button>
     </div>
   </div>
 </div>
 
 <script>
+// ── Key helpers ──────────────────────────────────────────
+function bkey(b,k){return 'brgy_'+b.replace(/[\s.]/g,'_')+'_'+k;}
 function getData(k,d){try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;}}
-const defAnn=[{id:1,title:"Special Collection this Saturday",body:"All barangays will have an extra collection run this Saturday from 7AM to 12PM.",date:"Feb 22",tag:"Collection",tagColor:"green"},{id:2,title:"No Collection on Feb 25 — Holiday",body:"In observance of EDSA Anniversary, garbage collection will be suspended.",date:"Feb 20",tag:"Holiday",tagColor:"orange"},{id:3,title:"New Drop-off Center Now Open",body:"A new e-waste drop-off center is now open at the Barangay Hall every weekday.",date:"Feb 18",tag:"Facility",tagColor:"blue"}];
+
+// ── Auth guard ───────────────────────────────────────────
+const currentUser=JSON.parse(sessionStorage.getItem('currentUser')||'null');
+const barangay=currentUser?currentUser.barangay:(sessionStorage.getItem('selectedBarangay')||null);
+if(!currentUser||!barangay){window.location.href='index.html';}
+
+// ── Default data ─────────────────────────────────────────
+const defAnn=[];
 const defSch=[{day:"Mon",type:"Biodegradable",fill:100,color:"var(--green-accent)",done:true},{day:"Tue",type:"Recyclable",fill:100,color:"var(--blue)",done:true},{day:"Wed",type:"Residual",fill:65,color:"var(--orange)",done:false},{day:"Thu",type:"Biodegradable",fill:0,color:"var(--green-accent)",done:false},{day:"Fri",type:"Recyclable",fill:0,color:"var(--blue)",done:false},{day:"Sat",type:"Special Run",fill:0,color:"var(--purple)",done:false}];
 const defTips=[{emoji:"🧴",title:"Rinse Before You Toss",text:"Rinse bottles before placing them in the recyclable bin."},{emoji:"🍌",title:"Compost Food Scraps",text:"Banana peels and vegetable trimmings can be composted."},{emoji:"🛍️",title:"Bring Your Own Bag",text:"Reusable bags eliminate dozens of plastic bags monthly."},{emoji:"📦",title:"Flatten Cardboard",text:"Flatten boxes before disposal for more efficient recycling."}];
+const defTrucks=[{name:"Truck #1 — Zone A",status:"En Route",eta:"~25 mins",progress:65},{name:"Truck #2 — Zone B",status:"Completed",eta:"Done ✓",progress:100},{name:"Truck #3 — Zone C",status:"Starting Soon",eta:"2:00 PM",progress:15}];
 
-const barangay=sessionStorage.getItem('selectedBarangay')||'Your Barangay';
-document.getElementById('barangayBadge').textContent='📍 '+barangay;
+// ── Init UI ──────────────────────────────────────────────
+const initials=(currentUser.name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+document.getElementById('userAvatarNav').textContent=initials;
+document.getElementById('userNameNav').textContent=currentUser.name.split(' ')[0];
+document.getElementById('heroGreeting').textContent='Welcome back, '+currentUser.name.split(' ')[0]+'!';
 document.getElementById('heroBarangay').textContent=barangay;
 document.getElementById('heroDate').textContent=new Date().toLocaleDateString('en-PH',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-function renderAnn(){const ann=getData('announcements',defAnn);document.getElementById('announcementCount').textContent=ann.length+' Active';document.getElementById('announcementsContainer').innerHTML=ann.slice(0,3).map(a=>`<div class="announcement-item"><div class="ann-top"><div class="ann-title">${a.title}</div><div class="ann-date">${a.date}</div></div><div class="ann-body">${a.body}</div><span class="ann-tag badge-sm badge-${a.tagColor||'green'}">${a.tag}</span></div>`).join('');}
-function renderSch(){document.getElementById('scheduleContainer').innerHTML=getData('collectionSchedule',defSch).map(s=>`<div class="schedule-row"><span class="schedule-day">${s.day}</span><div class="schedule-bar"><div class="schedule-fill" style="width:${s.fill}%;background:${s.color}"></div></div><span class="schedule-type">${s.type}</span><div class="schedule-status" style="background:${s.done?'var(--green-accent)':'var(--sand)'}"></div></div>`).join('');}
-function renderTips(){document.getElementById('ecoTipsContainer').innerHTML=getData('ecoTips',defTips).map(t=>`<div class="tip-item"><span class="tip-emoji">${t.emoji}</span><div><div class="tip-title">${t.title}</div><div class="tip-text">${t.text}</div></div></div>`).join('');}
-function renderReps(){const reps=getData('communityReports',[]);document.getElementById('heroReports').textContent=reps.length||'0';const el=document.getElementById('recentReports');el.innerHTML=reps.length?reps.slice(-3).reverse().map(r=>`• ${r.type} — ${r.location}`).join('<br>'):'<span style="opacity:0.5">No reports yet</span>';}
+// ── Render functions ─────────────────────────────────────
+function renderAnn(){
+  const ann=getData(bkey(barangay,'announcements'),defAnn);
+  document.getElementById('annCount').textContent=ann.length+' Active';
+  document.getElementById('announcementsContainer').innerHTML=ann.length
+    ?ann.slice(0,3).map(a=>`<div class="announcement-item"><div class="ann-top"><div class="ann-title">${a.title}</div><div class="ann-date">${a.date}</div></div><div class="ann-body">${a.body}</div><span class="ann-tag badge-sm badge-${a.tagColor||'green'}">${a.tag}</span></div>`).join('')
+    :'<div style="padding:20px 0;text-align:center;color:var(--text-muted);font-size:13px">No announcements yet for '+barangay+'</div>';
+}
+function renderSch(){
+  document.getElementById('scheduleContainer').innerHTML=getData(bkey(barangay,'schedule'),defSch)
+    .map(s=>`<div class="schedule-row"><span class="schedule-day">${s.day}</span><div class="schedule-bar"><div class="schedule-fill" style="width:${s.fill}%;background:${s.color}"></div></div><span class="schedule-type">${s.type}</span><div class="schedule-status" style="background:${s.done?'var(--green-accent)':'var(--sand)'}"></div></div>`).join('');
+}
+function renderTips(){
+  document.getElementById('ecoTipsContainer').innerHTML=getData(bkey(barangay,'tips'),defTips)
+    .map(t=>`<div class="tip-item"><span class="tip-emoji">${t.emoji}</span><div><div class="tip-title">${t.title}</div><div class="tip-text">${t.text}</div></div></div>`).join('');
+}
+function renderTrucks(){
+  const trucks=getData(bkey(barangay,'trucks'),defTrucks);
+  document.getElementById('truckContainer').innerHTML=trucks.map(t=>`
+    <div class="status-truck"><span class="truck-icon">🚚</span><div class="truck-info">
+      <div class="truck-route">${t.name}</div><div class="truck-time">${t.eta}</div>
+      <div class="truck-progress"><div class="truck-fill" style="width:${t.progress}%;background:${t.progress>=100?'var(--lime)':'var(--green-accent)'}"></div></div>
+    </div></div>`).join('');
+}
+function renderReports(){
+  const reps=getData(bkey(barangay,'reports'),[]);
+  document.getElementById('heroReports').textContent=reps.length;
+  const resolved=getData(bkey(barangay,'resolvedCount'),0);
+  document.getElementById('resolvedCount').textContent=resolved;
+  const el=document.getElementById('recentReports');
+  el.innerHTML=reps.length?reps.slice(-3).reverse().map(r=>`• ${r.type} — ${r.location}`).join('<br>'):'<span style="opacity:0.5">No reports yet</span>';
+}
 
-renderAnn(); renderSch(); renderTips(); renderReps();
+renderAnn();renderSch();renderTips();renderTrucks();renderReports();
 
-function openReportModal(){document.getElementById('reportModal').classList.add('open');document.body.style.overflow='hidden';}
+// ── Report modal ─────────────────────────────────────────
+const RATE_LIMIT_MS = 2*60*60*1000; // 2 hours between reports
+const MAX_REPORTS_PER_WINDOW = 3;
+
+function openReportModal(){
+  // Check rate limit
+  const key='report_times_'+currentUser.id;
+  const times=JSON.parse(localStorage.getItem(key)||'[]').filter(t=>Date.now()-t<RATE_LIMIT_MS);
+  const warn=document.getElementById('rateWarn');
+  const btn=document.getElementById('submitReportBtn');
+  if(times.length>=MAX_REPORTS_PER_WINDOW){
+    warn.style.display='block'; btn.disabled=true;
+    warn.textContent='⚠️ You have reached the limit of '+MAX_REPORTS_PER_WINDOW+' reports per 2 hours. Please wait before submitting again.';
+  } else { warn.style.display='none'; btn.disabled=false; }
+
+  document.getElementById('reporterAvatar').textContent=initials;
+  document.getElementById('reporterName').textContent=currentUser.name;
+  document.getElementById('reporterBarangay').textContent=barangay+' Resident · Account verified';
+  document.getElementById('reportModal').classList.add('open'); document.body.style.overflow='hidden';
+}
 function closeReportModal(){document.getElementById('reportModal').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('reportModal').addEventListener('click',function(e){if(e.target===this)closeReportModal();});
+
+function previewPhotos(input){
+  const preview=document.getElementById('photoPreview'),count=document.getElementById('photoCount');
+  preview.innerHTML='';
+  const files=Array.from(input.files).slice(0,3);
+  files.forEach(f=>{const img=document.createElement('img');img.className='photo-thumb';img.src=URL.createObjectURL(f);preview.appendChild(img);});
+  count.textContent=files.length?'✓ '+files.length+' photo'+(files.length>1?'s':'')+' attached':'';
+}
 
 function submitReport(){
   const type=document.getElementById('reportType').value, location=document.getElementById('reportLocation').value.trim();
   if(!type||!location){showToast('⚠️ Please fill in the issue type and location.');return;}
-  const reps=getData('communityReports',[]);
-  reps.push({type,location,desc:document.getElementById('reportDesc').value.trim(),date:new Date().toLocaleDateString('en-PH'),name:document.getElementById('reportName').value||'Anonymous'});
-  localStorage.setItem('communityReports',JSON.stringify(reps));
-  closeReportModal(); renderReps();
-  showToast('✅ Report submitted! Our team will act soon.');
-  ['reportType','reportLocation','reportDesc','reportName'].forEach(id=>document.getElementById(id).value='');
+
+  // Rate limit check
+  const rkey='report_times_'+currentUser.id;
+  const times=JSON.parse(localStorage.getItem(rkey)||'[]').filter(t=>Date.now()-t<RATE_LIMIT_MS);
+  if(times.length>=MAX_REPORTS_PER_WINDOW){showToast('⚠️ Report limit reached. Please wait.');return;}
+  times.push(Date.now()); localStorage.setItem(rkey,JSON.stringify(times));
+
+  const photos=Array.from(document.getElementById('reportPhotos').files).slice(0,3);
+  const hasPhoto=photos.length>0;
+
+  const reps=getData(bkey(barangay,'reports'),[]);
+  reps.push({
+    id:'r_'+Date.now(), type, location, desc:document.getElementById('reportDesc').value.trim(),
+    date:new Date().toLocaleDateString('en-PH'), time:new Date().toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'}),
+    reporterId:currentUser.id, reporterName:currentUser.name, reporterPhone:currentUser.phone||'—',
+    hasPhoto, photoCount:photos.length, status:'Open', barangay
+  });
+  localStorage.setItem(bkey(barangay,'reports'),JSON.stringify(reps));
+  closeReportModal(); renderReports();
+  showToast('✅ Report submitted! Our team will act soon.'+(hasPhoto?' 📸 Evidence attached.':''));
+  ['reportType','reportLocation','reportDesc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('photoPreview').innerHTML='';
+  document.getElementById('photoCount').textContent='';
 }
 
+// ── Navigation ───────────────────────────────────────────
 function toggleMenu(){const nc=document.getElementById('navCenter');nc.classList.toggle('open');}
-document.addEventListener('click',function(e){const nc=document.getElementById('navCenter'),mt=document.getElementById('menuToggle');if(nc.classList.contains('open')&&!nc.contains(e.target)&&!mt.contains(e.target))nc.classList.remove('open');});
-
-function showToast(msg){const t=document.createElement('div');t.textContent=msg;t.className='toast-popup';document.body.appendChild(t);requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},3500);}
-window.addEventListener('focus',()=>{renderAnn();renderSch();renderTips();renderReps();});
+document.addEventListener('click',function(e){const nc=document.getElementById('navCenter'),mt=document.getElementById('menuToggle');if(nc&&nc.classList.contains('open')&&!nc.contains(e.target)&&mt&&!mt.contains(e.target))nc.classList.remove('open');});
+function doLogout(){sessionStorage.clear();window.location.href='index.html';}
+function showToast(msg){const t=document.createElement('div');t.textContent=msg;t.className='toast-popup';document.body.appendChild(t);requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},4000);}
+window.addEventListener('focus',()=>{renderAnn();renderSch();renderTips();renderTrucks();renderReports();});
 </script>
 </body>
 </html>
-
