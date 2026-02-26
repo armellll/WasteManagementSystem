@@ -14,14 +14,12 @@
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; overflow-x: hidden; }
-body::before {
-  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
   background-image: radial-gradient(circle at 15% 85%, rgba(76,175,120,0.12) 0%, transparent 50%),
-    radial-gradient(circle at 85% 15%, rgba(168,224,99,0.10) 0%, transparent 45%);
-}
-.page { position: relative; z-index: 1; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
-.left-panel { padding: 60px 52px 60px 60px; display: flex; flex-direction: column; justify-content: center; animation: fadeSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) both; }
-@keyframes fadeSlideLeft { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:translateX(0)} }
+    radial-gradient(circle at 85% 15%, rgba(168,224,99,0.10) 0%, transparent 45%); }
+.page { position:relative; z-index:1; min-height:100vh; display:grid; grid-template-columns:1fr 1fr; }
+.left-panel { padding:60px 52px 60px 60px; display:flex; flex-direction:column; justify-content:center; animation:fadeLeft 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes fadeLeft { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:translateX(0)} }
 .badge { display:inline-flex; align-items:center; gap:8px; background:var(--green-mid); color:var(--lime); font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:7px 14px; border-radius:100px; margin-bottom:28px; width:fit-content; }
 .badge-dot { width:6px; height:6px; background:var(--lime); border-radius:50%; animation:pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
@@ -39,8 +37,8 @@ h1 em::after { content:''; position:absolute; bottom:2px; left:0; right:0; heigh
 .stat-value { font-family:'Syne',sans-serif; font-size:24px; font-weight:700; color:var(--green-deep); line-height:1; }
 .stat-label { font-size:12px; color:var(--text-muted); margin-top:4px; }
 .stat-divider { width:1px; background:var(--sand); align-self:stretch; }
-.right-panel { padding:60px 60px 60px 52px; display:flex; flex-direction:column; justify-content:center; border-left:1px solid var(--sand); animation:fadeSlideRight 0.9s 0.15s cubic-bezier(0.22,1,0.36,1) both; }
-@keyframes fadeSlideRight { from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:translateX(0)} }
+.right-panel { padding:60px 60px 60px 52px; display:flex; flex-direction:column; justify-content:center; border-left:1px solid var(--sand); animation:fadeRight 0.9s 0.15s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes fadeRight { from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:translateX(0)} }
 .panel-heading { font-family:'Syne',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
 .panel-title { font-family:'Syne',sans-serif; font-size:26px; font-weight:700; color:var(--green-deep); letter-spacing:-0.02em; margin-bottom:8px; }
 .panel-sub { font-size:14px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
@@ -63,10 +61,11 @@ select:focus { border-color:var(--green-accent); }
 .admin-label .section-icon { background:rgba(168,224,99,0.15); }
 .btn-admin-enter { background:rgba(255,255,255,0.12); color:#fff; border:1.5px solid rgba(255,255,255,0.2); font-family:'Syne',sans-serif; font-size:14px; font-weight:600; padding:12px 20px; border-radius:10px; cursor:pointer; width:100%; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:8px; }
 .btn-admin-enter:hover { background:rgba(255,255,255,0.2); transform:translateY(-2px); }
+/* MODAL */
 .modal-overlay { display:none; position:fixed; inset:0; background:rgba(13,43,30,0.55); backdrop-filter:blur(6px); z-index:100; align-items:center; justify-content:center; padding:16px; }
 .modal-overlay.open { display:flex; animation:fadeIn 0.2s ease; }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-.modal { background:#fff; border-radius:22px; width:100%; max-width:460px; overflow:hidden; animation:slideUp 0.32s cubic-bezier(0.22,1,0.36,1); max-height:92vh; overflow-y:auto; }
+.modal { background:#fff; border-radius:22px; width:100%; max-width:480px; overflow:hidden; animation:slideUp 0.32s cubic-bezier(0.22,1,0.36,1); max-height:92vh; overflow-y:auto; }
 @keyframes slideUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 .modal-header { background:linear-gradient(135deg,var(--green-deep),var(--green-mid)); padding:24px 28px 20px; position:relative; }
 .modal-header h2 { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:#fff; margin-bottom:3px; }
@@ -89,34 +88,34 @@ select:focus { border-color:var(--green-accent); }
 .form-hint { font-size:11.5px; color:var(--text-muted); margin-top:5px; line-height:1.5; }
 .modal-footer { padding:0 28px 24px; }
 .btn-modal { width:100%; padding:13px; border-radius:11px; font-family:'Syne',sans-serif; font-size:14px; font-weight:600; cursor:pointer; border:none; background:var(--green-bright); color:#fff; transition:all 0.2s; }
-.btn-modal:hover { background:var(--green-mid); transform:translateY(-1px); }
+.btn-modal:hover { background:var(--green-mid); }
 .tab-panel { display:none; }
 .tab-panel.active { display:block; }
 .error-msg { color:var(--red); font-size:12px; margin-top:5px; display:none; }
 .toast-popup { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(16px); background:var(--green-deep); color:#f5f0e8; padding:12px 22px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:13.5px; z-index:999; box-shadow:0 8px 28px rgba(0,0,0,0.2); opacity:0; transition:all 0.4s cubic-bezier(0.22,1,0.36,1); white-space:nowrap; max-width:90vw; text-align:center; }
-
-/* RESPONSIVE */
-@media (max-width: 860px) {
-  .page { grid-template-columns:1fr; min-height:auto; }
-  .left-panel { padding:48px 32px 36px; border-bottom:1px solid var(--sand); animation:fadeSlideLeft 0.7s cubic-bezier(0.22,1,0.36,1) both; }
-  .right-panel { padding:36px 32px 52px; border-left:none; animation:none; opacity:1; }
-  .description { max-width:100%; font-size:15px; }
+/* forgot password link */
+.forgot-link { font-size:12px; color:var(--green-bright); text-align:right; display:block; margin-top:6px; cursor:pointer; text-decoration:underline; }
+/* password strength */
+.pw-strength { margin-top:6px; height:4px; border-radius:100px; background:var(--sand); overflow:hidden; }
+.pw-bar { height:100%; border-radius:100px; transition:width 0.3s,background 0.3s; width:0; }
+.pw-label { font-size:11px; color:var(--text-muted); margin-top:4px; }
+/* terms */
+.terms-row { display:flex; align-items:flex-start; gap:8px; font-size:12.5px; color:var(--text-muted); }
+.terms-row input { margin-top:2px; accent-color:var(--green-bright); }
+@media (max-width:860px) {
+  .page { grid-template-columns:1fr; }
+  .left-panel { padding:48px 32px 36px; border-bottom:1px solid var(--sand); }
+  .right-panel { padding:36px 32px 52px; border-left:none; }
+  .description { max-width:100%; }
 }
-@media (max-width: 480px) {
+@media (max-width:480px) {
   .left-panel { padding:32px 18px 28px; }
   .right-panel { padding:24px 18px 44px; }
   h1 { font-size:28px; }
-  .badge { font-size:10px; padding:6px 12px; }
-  .description { font-size:14px; margin-bottom:28px; }
-  .stats { gap:16px; }
-  .stat-value { font-size:20px; }
-  .panel-title { font-size:22px; }
-  .section-card { padding:18px; }
   .modal-overlay { align-items:flex-end; padding:0; }
-  .modal { border-bottom-left-radius:0; border-bottom-right-radius:0; max-height:95vh; border-radius:20px 20px 0 0; }
+  .modal { border-radius:20px 20px 0 0; max-height:95vh; }
   .modal-body { padding:20px 18px; }
   .modal-footer { padding:0 18px 24px; }
-  .modal-header { padding:20px 18px 16px; }
 }
 </style>
 </head>
@@ -125,12 +124,7 @@ select:focus { border-color:var(--green-accent); }
   <div class="left-panel">
     <div class="badge"><span class="badge-dot"></span>System Active</div>
     <div class="logo-row">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
-          <path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
-        </svg>
-      </div>
+      <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></div>
       <div class="logo-name">Eco<span>Track</span></div>
     </div>
     <h1>Smart <em>Waste</em><br>Management<br>System</h1>
@@ -143,21 +137,27 @@ select:focus { border-color:var(--green-accent); }
       <div class="stat"><span class="stat-value">96%</span><span class="stat-label">Collection Rate</span></div>
     </div>
   </div>
+
   <div class="right-panel">
     <div class="panel-heading">Get Started</div>
     <div class="panel-title">Choose Your Access</div>
-    <p class="panel-sub">Select how you'd like to use the system — as a community member or as an administrator.</p>
+    <p class="panel-sub">Select your barangay and sign in, or proceed as an administrator.</p>
+
+    <!-- USER SECTION -->
     <div class="section-card">
       <div class="section-label"><div class="section-icon">🏘️</div><span>Community Member</span></div>
       <select id="barangaySelect">
-        <option value="" disabled selected>— Select your Barangay / Location —</option>
+        <option value="" disabled selected>— Select your Barangay —</option>
         <optgroup label="Zone A"><option value="Poblacion">Poblacion</option><option value="San Jose">San Jose</option><option value="San Pedro">San Pedro</option><option value="Sta. Cruz">Sta. Cruz</option></optgroup>
         <optgroup label="Zone B"><option value="Bagong Bayan">Bagong Bayan</option><option value="Calaanan">Calaanan</option><option value="Mabuhay">Mabuhay</option><option value="Pag-asa">Pag-asa</option></optgroup>
         <optgroup label="Zone C"><option value="Maliwanag">Maliwanag</option><option value="Masagana">Masagana</option><option value="Rizal">Rizal</option><option value="Sampaguita">Sampaguita</option></optgroup>
       </select>
-      <button class="btn btn-primary" onclick="handleContinue()">Continue <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="btn btn-primary" onclick="openUserModal()">Continue <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
+
     <div class="divider"><div class="divider-line"></div><span class="divider-text">or</span><div class="divider-line"></div></div>
+
+    <!-- ADMIN SECTION -->
     <div class="section-card admin-card">
       <div class="section-label admin-label"><div class="section-icon">🔐</div><span class="admin-label-text">Administrator Access</span></div>
       <p class="admin-desc">Manage schedules, review reports, oversee collection operations and configure system settings.</p>
@@ -166,92 +166,198 @@ select:focus { border-color:var(--green-accent); }
   </div>
 </div>
 
+<!-- USER AUTH MODAL -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal('userModal')">×</button>
+      <h2 id="userModalTitle">Resident Sign In</h2>
+      <p id="userModalSub">Access your barangay dashboard</p>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchUserTab('login')">Log In</button>
+      <button class="tab-btn" onclick="switchUserTab('signup')">Sign Up</button>
+    </div>
+    <!-- LOGIN -->
+    <div class="tab-panel active" id="utab-login">
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="uLoginEmail" placeholder="your@email.com" autocomplete="email"></div>
+        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="uLoginPass" placeholder="Your password" autocomplete="current-password"><div class="error-msg" id="uLoginErr">Invalid email or password.</div></div>
+        <span class="forgot-link" onclick="showForgot()">Forgot password?</span>
+      </div>
+      <div class="modal-footer"><button class="btn-modal" onclick="handleUserLogin()">Log In</button></div>
+    </div>
+    <!-- SIGNUP -->
+    <div class="tab-panel" id="utab-signup">
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="uSignupName" placeholder="Your full name" autocomplete="name"></div>
+        <div class="form-group"><label class="form-label">Phone Number <span style="color:var(--text-muted);font-size:10px;text-transform:none;letter-spacing:0">(for verification)</span></label><input type="tel" class="form-input" id="uSignupPhone" placeholder="+63 9XX XXX XXXX" autocomplete="tel"></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="uSignupEmail" placeholder="your@email.com" autocomplete="email"></div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" id="uSignupPass" placeholder="Min. 8 characters" autocomplete="new-password" oninput="checkPwStrength(this.value)">
+          <div class="pw-strength"><div class="pw-bar" id="pwBar"></div></div>
+          <div class="pw-label" id="pwLabel"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" class="form-input" id="uSignupConfirm" placeholder="Repeat password" autocomplete="new-password"></div>
+        <div class="form-group">
+          <div class="terms-row"><input type="checkbox" id="termsCheck"><label for="termsCheck">I agree to the <span style="color:var(--green-bright);cursor:pointer;text-decoration:underline">Terms of Service</span> and confirm I am a resident of <strong id="termsBarangay">—</strong></label></div>
+          <div class="error-msg" id="uSignupErr">Please check all fields.</div>
+        </div>
+      </div>
+      <div class="modal-footer"><button class="btn-modal" onclick="handleUserSignup()">Create Account</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN MODAL -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeAdminModal()">×</button>
+      <button class="modal-close" onclick="closeModal('adminModal')">×</button>
       <h2>Admin Portal</h2><p>Barangay officials only — verified access required</p>
     </div>
     <div class="modal-tabs">
-      <button class="tab-btn active" onclick="switchTab('login')">Log In</button>
-      <button class="tab-btn" onclick="switchTab('signup')">Create Account</button>
+      <button class="tab-btn active" onclick="switchAdminTab('login')">Log In</button>
+      <button class="tab-btn" onclick="switchAdminTab('signup')">Create Account</button>
     </div>
-    <div class="tab-panel active" id="tab-login">
+    <div class="tab-panel active" id="atab-login">
       <div class="modal-body">
-        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="loginEmail" placeholder="yourname@barangay.gov.ph" autocomplete="email"></div>
-        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPassword" placeholder="Enter your password" autocomplete="current-password"><div class="error-msg" id="loginError">Invalid email or password. Please try again.</div></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="aLoginEmail" placeholder="yourname@barangay.gov.ph" autocomplete="email"></div>
+        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="aLoginPass" placeholder="Enter your password" autocomplete="current-password"><div class="error-msg" id="aLoginErr">Invalid email or password.</div></div>
       </div>
-      <div class="modal-footer"><button class="btn-modal" onclick="handleLogin()">Log In to Admin Panel</button></div>
+      <div class="modal-footer"><button class="btn-modal" onclick="handleAdminLogin()">Log In to Admin Panel</button></div>
     </div>
-    <div class="tab-panel" id="tab-signup">
+    <div class="tab-panel" id="atab-signup">
       <div class="modal-body">
-        <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="signupName" placeholder="e.g. Juan dela Cruz"></div>
-        <div class="form-group"><label class="form-label">Position / Title</label><input type="text" class="form-input" id="signupPosition" placeholder="e.g. Barangay Captain, Kagawad"></div>
+        <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="aSignupName" placeholder="e.g. Juan dela Cruz"></div>
+        <div class="form-group"><label class="form-label">Position / Title</label><input type="text" class="form-input" id="aSignupPosition" placeholder="e.g. Barangay Captain, Kagawad"></div>
         <div class="form-group"><label class="form-label">Barangay</label>
-          <select class="form-input select-styled" id="signupBarangay">
+          <select class="form-input select-styled" id="aSignupBarangay">
             <option value="" disabled selected>Select your barangay</option>
             <option>Poblacion</option><option>San Jose</option><option>San Pedro</option><option>Sta. Cruz</option>
             <option>Bagong Bayan</option><option>Calaanan</option><option>Mabuhay</option><option>Pag-asa</option>
             <option>Maliwanag</option><option>Masagana</option><option>Rizal</option><option>Sampaguita</option>
           </select>
         </div>
-        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="signupEmail" placeholder="yourname@barangay.gov.ph"></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="aSignupEmail" placeholder="yourname@barangay.gov.ph"></div>
         <div class="form-group">
           <label class="form-label">Proof of Office <span style="color:var(--red)">*</span></label>
-          <label class="file-upload"><input type="file" id="proofFile" accept=".pdf,.jpg,.jpeg,.png" onchange="updateFileName(this)">📎 Upload ID / Appointment Letter / Certificate<div class="file-name" id="fileName"></div></label>
+          <label class="file-upload"><input type="file" id="aProofFile" accept=".pdf,.jpg,.jpeg,.png" onchange="updateFileName(this,'aFileName')">📎 Upload ID / Appointment Letter / Certificate<div class="file-name" id="aFileName"></div></label>
           <p class="form-hint">Accepted: PDF, JPG, PNG. Will be reviewed before account approval.</p>
         </div>
-        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="signupPassword" placeholder="Create a strong password"></div>
-        <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" class="form-input" id="signupConfirm" placeholder="Repeat your password"><div class="error-msg" id="signupError">Passwords do not match.</div></div>
+        <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="aSignupPass" placeholder="Create a strong password"></div>
+        <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" class="form-input" id="aSignupConfirm" placeholder="Repeat password"><div class="error-msg" id="aSignupErr">Passwords do not match.</div></div>
       </div>
-      <div class="modal-footer"><button class="btn-modal" onclick="handleSignup()">Submit for Verification</button></div>
+      <div class="modal-footer"><button class="btn-modal" onclick="handleAdminSignup()">Submit for Verification</button></div>
     </div>
   </div>
 </div>
 
 <script>
-function handleContinue() {
-  const sel = document.getElementById('barangaySelect');
-  if (!sel.value) { sel.style.borderColor='#e05252'; sel.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:300}); setTimeout(()=>sel.style.borderColor='',900); return; }
-  sessionStorage.setItem('selectedBarangay', sel.value);
-  window.location.href = 'mainSystem.html';
+function getBarangay(){return document.getElementById('barangaySelect').value;}
+function bkey(b,k){return 'brgy_'+b.replace(/[\s.]/g,'_')+'_'+k;}
+
+function openUserModal(){
+  const b=getBarangay();
+  if(!b){
+    const sel=document.getElementById('barangaySelect');
+    sel.style.borderColor='#e05252';
+    sel.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:300});
+    setTimeout(()=>sel.style.borderColor='',900); return;
+  }
+  document.getElementById('userModalTitle').textContent='Sign In — '+b;
+  document.getElementById('userModalSub').textContent='Access the '+b+' barangay dashboard';
+  document.getElementById('termsBarangay').textContent=b;
+  document.getElementById('userModal').classList.add('open'); document.body.style.overflow='hidden';
 }
-function openAdminModal() { document.getElementById('adminModal').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeAdminModal() { document.getElementById('adminModal').classList.remove('open'); document.body.style.overflow=''; }
-document.getElementById('adminModal').addEventListener('click', function(e){ if(e.target===this) closeAdminModal(); });
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',(i===0&&tab==='login')||(i===1&&tab==='signup')));
-  document.getElementById('tab-login').classList.toggle('active',tab==='login');
-  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
+function openAdminModal(){document.getElementById('adminModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)closeModal(this.id);}));
+
+function switchUserTab(tab){
+  document.querySelectorAll('#userModal .tab-btn').forEach((b,i)=>b.classList.toggle('active',(i===0&&tab==='login')||(i===1&&tab==='signup')));
+  document.getElementById('utab-login').classList.toggle('active',tab==='login');
+  document.getElementById('utab-signup').classList.toggle('active',tab==='signup');
 }
-function updateFileName(input) { document.getElementById('fileName').textContent = input.files[0]?'✓ '+input.files[0].name:''; }
-function handleLogin() {
-  const email=document.getElementById('loginEmail').value.trim(), pass=document.getElementById('loginPassword').value, err=document.getElementById('loginError');
+function switchAdminTab(tab){
+  document.querySelectorAll('#adminModal .tab-btn').forEach((b,i)=>b.classList.toggle('active',(i===0&&tab==='login')||(i===1&&tab==='signup')));
+  document.getElementById('atab-login').classList.toggle('active',tab==='login');
+  document.getElementById('atab-signup').classList.toggle('active',tab==='signup');
+}
+
+function checkPwStrength(pw){
+  const bar=document.getElementById('pwBar'), lbl=document.getElementById('pwLabel');
+  let score=0;
+  if(pw.length>=8)score++; if(pw.length>=12)score++; if(/[A-Z]/.test(pw))score++; if(/[0-9]/.test(pw))score++; if(/[^A-Za-z0-9]/.test(pw))score++;
+  const levels=[['',0,''],['Very Weak',20,'#e05252'],['Weak',40,'#e8874a'],['Fair',60,'#f0c040'],['Strong',80,'#4caf78'],['Very Strong',100,'#2d7a4f']];
+  const l=levels[score]||levels[0];
+  bar.style.width=l[1]+'%'; bar.style.background=l[2]; lbl.textContent=l[0]; lbl.style.color=l[2];
+}
+
+function handleUserLogin(){
+  const b=getBarangay(), email=document.getElementById('uLoginEmail').value.trim(), pass=document.getElementById('uLoginPass').value;
+  const users=JSON.parse(localStorage.getItem(bkey(b,'users'))||'[]');
+  const match=users.find(u=>u.email===email&&u.password===pass);
+  if(match){
+    sessionStorage.setItem('currentUser',JSON.stringify({...match,barangay:b}));
+    sessionStorage.setItem('selectedBarangay',b);
+    window.location.href='mainSystem.html';
+  } else {
+    const err=document.getElementById('uLoginErr'); err.style.display='block'; setTimeout(()=>err.style.display='none',3000);
+  }
+}
+
+function handleUserSignup(){
+  const b=getBarangay(), name=document.getElementById('uSignupName').value.trim(),
+    phone=document.getElementById('uSignupPhone').value.trim(), email=document.getElementById('uSignupEmail').value.trim(),
+    pass=document.getElementById('uSignupPass').value, confirm=document.getElementById('uSignupConfirm').value,
+    terms=document.getElementById('termsCheck').checked;
+  const err=document.getElementById('uSignupErr');
+  if(!name||!email||!pass||!phone){err.textContent='Please fill in all required fields.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  if(pass.length<8){err.textContent='Password must be at least 8 characters.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  if(pass!==confirm){err.textContent='Passwords do not match.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  if(!terms){err.textContent='Please agree to the Terms of Service.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  const users=JSON.parse(localStorage.getItem(bkey(b,'users'))||'[]');
+  if(users.find(u=>u.email===email)){err.textContent='An account with this email already exists.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  const newUser={id:'u_'+Date.now(),name,phone,email,password:pass,barangay:b,joinedAt:new Date().toLocaleDateString('en-PH'),reportCount:0};
+  users.push(newUser); localStorage.setItem(bkey(b,'users'),JSON.stringify(users));
+  sessionStorage.setItem('currentUser',JSON.stringify({...newUser,barangay:b}));
+  sessionStorage.setItem('selectedBarangay',b);
+  window.location.href='mainSystem.html';
+}
+
+function handleAdminLogin(){
+  const email=document.getElementById('aLoginEmail').value.trim(), pass=document.getElementById('aLoginPass').value;
   const accounts=JSON.parse(localStorage.getItem('adminAccounts')||'[]');
   const match=accounts.find(a=>a.email===email&&a.password===pass&&a.approved);
   if(match){sessionStorage.setItem('adminUser',JSON.stringify(match));window.location.href='admin.html';}
-  else{err.style.display='block';setTimeout(()=>err.style.display='none',3000);}
+  else{const e=document.getElementById('aLoginErr');e.style.display='block';setTimeout(()=>e.style.display='none',3000);}
 }
-function handleSignup() {
-  const name=document.getElementById('signupName').value.trim(), position=document.getElementById('signupPosition').value.trim(),
-    barangay=document.getElementById('signupBarangay').value, email=document.getElementById('signupEmail').value.trim(),
-    password=document.getElementById('signupPassword').value, confirm=document.getElementById('signupConfirm').value,
-    file=document.getElementById('proofFile').files[0], err=document.getElementById('signupError');
-  if(!name||!position||!barangay||!email||!password||!file){err.textContent='Please fill in all fields and upload proof.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
-  if(password!==confirm){err.textContent='Passwords do not match.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+function handleAdminSignup(){
+  const name=document.getElementById('aSignupName').value.trim(), position=document.getElementById('aSignupPosition').value.trim(),
+    barangay=document.getElementById('aSignupBarangay').value, email=document.getElementById('aSignupEmail').value.trim(),
+    pass=document.getElementById('aSignupPass').value, confirm=document.getElementById('aSignupConfirm').value,
+    file=document.getElementById('aProofFile').files[0];
+  const err=document.getElementById('aSignupErr');
+  if(!name||!position||!barangay||!email||!pass||!file){err.textContent='Please fill in all fields and upload proof.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  if(pass!==confirm){err.textContent='Passwords do not match.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
   const accounts=JSON.parse(localStorage.getItem('adminAccounts')||'[]');
-  if(accounts.find(a=>a.email===email)){err.textContent='An account with this email already exists.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
-  accounts.push({name,position,barangay,email,password,approved:true});
+  if(accounts.find(a=>a.email===email)){err.textContent='Account with this email already exists.';err.style.display='block';setTimeout(()=>err.style.display='none',3000);return;}
+  accounts.push({name,position,barangay,email,password:pass,approved:true});
   localStorage.setItem('adminAccounts',JSON.stringify(accounts));
-  closeAdminModal(); showToast('✅ Account created! You can now log in.'); setTimeout(()=>switchTab('login'),600);
+  closeModal('adminModal'); showToast('✅ Admin account created! You can now log in.');
+  setTimeout(()=>switchAdminTab('login'),600);
 }
-function showToast(msg) {
+
+function updateFileName(input,id){document.getElementById(id).textContent=input.files[0]?'✓ '+input.files[0].name:'';}
+function showForgot(){showToast('📧 Password reset is handled by your barangay admin.');}
+function showToast(msg){
   const t=document.createElement('div'); t.textContent=msg; t.className='toast-popup';
   document.body.appendChild(t);
   requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
-  setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},3200);
+  setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},3500);
 }
 </script>
 </body>
 </html>
-
