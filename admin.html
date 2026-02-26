@@ -14,168 +14,141 @@
   --orange: #e8874a; --blue: #4a7fb5; --red: #e05252; --purple: #8b6fb5;
   --sidebar-w: 230px;
 }
-html { height: 100%; }
-body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; display: flex; }
-
-/* SIDEBAR */
-.sidebar { width:var(--sidebar-w); flex-shrink:0; background:var(--green-deep); min-height:100vh; position:sticky; top:0; height:100vh; display:flex; flex-direction:column; padding:24px 0; overflow-y:auto; transition:transform 0.3s ease; }
-.sidebar-logo { display:flex; align-items:center; gap:10px; padding:0 20px 24px; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:12px; }
-.sidebar-logo-icon { width:34px; height:34px; background:var(--green-bright); border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.sidebar-logo-icon svg { width:17px; height:17px; }
-.sidebar-logo-name { font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:#fff; }
-.sidebar-logo-name span { color:var(--lime); }
-.sidebar-section { font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); padding:0 20px; margin:12px 0 4px; }
-.nav-item { display:flex; align-items:center; gap:10px; padding:10px 20px; color:rgba(255,255,255,0.6); font-size:13.5px; font-weight:500; cursor:pointer; transition:all 0.18s; border:none; background:transparent; width:100%; text-align:left; }
-.nav-item:hover { color:#fff; background:rgba(255,255,255,0.07); }
-.nav-item.active { color:var(--lime); background:rgba(168,224,99,0.1); border-right:3px solid var(--lime); }
-.nav-item-icon { font-size:16px; flex-shrink:0; }
-.sidebar-footer { margin-top:auto; padding:16px 20px 0; border-top:1px solid rgba(255,255,255,0.08); }
-.admin-profile { display:flex; align-items:center; gap:9px; margin-bottom:12px; }
-.admin-avatar { width:36px; height:36px; background:var(--green-bright); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
-.admin-name { font-family:'Syne',sans-serif; font-size:12.5px; font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.admin-role { font-size:10.5px; color:rgba(255,255,255,0.4); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.btn-logout { width:100%; padding:9px; background:rgba(224,82,82,0.15); color:#ff8080; border:1px solid rgba(224,82,82,0.2); border-radius:9px; font-family:'Syne',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; }
-.btn-logout:hover { background:rgba(224,82,82,0.25); }
-
-/* SIDEBAR OVERLAY (mobile) */
-.sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:89; }
-.sidebar-overlay.show { display:block; }
-
-/* MAIN CONTENT */
-.admin-main { flex:1; min-width:0; overflow-y:auto; display:flex; flex-direction:column; }
-
-/* TOPBAR */
-.topbar { background:#fff; border-bottom:1.5px solid var(--sand); padding:0 24px; height:56px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:40; gap:12px; }
-.topbar-left { display:flex; align-items:center; gap:10px; }
-.topbar-title { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--green-deep); }
-.topbar-actions { display:flex; align-items:center; gap:8px; }
-.badge-admin { background:rgba(168,224,99,0.15); color:var(--green-mid); font-size:10px; font-weight:600; letter-spacing:0.08em; padding:4px 10px; border-radius:100px; border:1px solid rgba(76,175,120,0.2); white-space:nowrap; }
-.btn-sm { padding:7px 14px; border-radius:8px; font-family:'Syne',sans-serif; font-size:12px; font-weight:600; cursor:pointer; border:none; transition:all 0.2s; }
-.btn-primary-sm { background:var(--green-bright); color:#fff; }
-.btn-primary-sm:hover { background:var(--green-mid); }
-.menu-btn { display:none; background:none; border:none; cursor:pointer; padding:6px; color:var(--green-deep); }
-
-/* CONTENT */
-.content { padding:24px; flex:1; }
-.page-section { display:none; }
-.page-section.active { display:block; animation:fadeUp 0.35s cubic-bezier(0.22,1,0.36,1); }
+html{height:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);min-height:100vh;display:flex;}
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--green-deep);min-height:100vh;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:24px 0;overflow-y:auto;transition:transform 0.3s ease;}
+.sidebar-logo{display:flex;align-items:center;gap:10px;padding:0 20px 24px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;}
+.sidebar-logo-icon{width:34px;height:34px;background:var(--green-bright);border-radius:9px;display:flex;align-items:center;justify-content:center;}
+.sidebar-logo-icon svg{width:17px;height:17px;}
+.sidebar-logo-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#fff;}
+.sidebar-logo-name span{color:var(--lime);}
+.sidebar-section{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:0 20px;margin:12px 0 4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;color:rgba(255,255,255,0.6);font-size:13.5px;font-weight:500;cursor:pointer;transition:all 0.18s;border:none;background:transparent;width:100%;text-align:left;}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,0.07);}
+.nav-item.active{color:var(--lime);background:rgba(168,224,99,0.1);border-right:3px solid var(--lime);}
+.nav-item-icon{font-size:16px;flex-shrink:0;}
+.sidebar-footer{margin-top:auto;padding:16px 20px 0;border-top:1px solid rgba(255,255,255,0.08);}
+.admin-profile{display:flex;align-items:center;gap:9px;margin-bottom:12px;}
+.admin-avatar{width:36px;height:36px;background:var(--green-bright);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;color:#fff;font-weight:700;}
+.admin-name{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.admin-role{font-size:10.5px;color:rgba(255,255,255,0.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.brgy-pill{background:rgba(168,224,99,0.15);color:var(--lime);font-size:10px;font-weight:700;letter-spacing:0.06em;padding:3px 9px;border-radius:100px;display:inline-block;margin-bottom:10px;}
+.btn-logout{width:100%;padding:9px;background:rgba(224,82,82,0.15);color:#ff8080;border:1px solid rgba(224,82,82,0.2);border-radius:9px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:89;}
+.sidebar-overlay.show{display:block;}
+.admin-main{flex:1;min-width:0;overflow-y:auto;display:flex;flex-direction:column;}
+.topbar{background:#fff;border-bottom:1.5px solid var(--sand);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40;gap:12px;}
+.topbar-left{display:flex;align-items:center;gap:10px;}
+.topbar-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--green-deep);}
+.topbar-actions{display:flex;align-items:center;gap:8px;}
+.badge-admin{background:rgba(168,224,99,0.15);color:var(--green-mid);font-size:10px;font-weight:600;letter-spacing:0.08em;padding:4px 10px;border-radius:100px;border:1px solid rgba(76,175,120,0.2);white-space:nowrap;}
+.btn-sm{padding:7px 14px;border-radius:8px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;}
+.btn-primary-sm{background:var(--green-bright);color:#fff;}
+.btn-primary-sm:hover{background:var(--green-mid);}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--green-deep);}
+.content{padding:20px;flex:1;}
+.page-section{display:none;}
+.page-section.active{display:block;animation:fadeUp 0.35s cubic-bezier(0.22,1,0.36,1);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* STATS ROW */
-.stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:22px; }
-.stat-card { background:#fff; border:1.5px solid var(--sand); border-radius:16px; padding:18px; transition:box-shadow 0.2s; }
-.stat-card:hover { box-shadow:0 4px 20px rgba(13,43,30,0.07); }
-.stat-card-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:10px; }
-.stat-card-val { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; color:var(--green-deep); line-height:1; }
-.stat-card-lbl { font-size:11.5px; color:var(--text-muted); margin-top:3px; }
-
-/* SECTION CARD */
-.sec-card { background:#fff; border:1.5px solid var(--sand); border-radius:18px; padding:22px; margin-bottom:18px; }
-.sec-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:10px; }
-.sec-card-title { font-family:'Syne',sans-serif; font-size:14.5px; font-weight:700; color:var(--green-deep); }
-.btn-add { display:flex; align-items:center; gap:5px; background:var(--green-bright); color:#fff; border:none; padding:8px 14px; border-radius:9px; font-family:'Syne',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
-.btn-add:hover { background:var(--green-mid); }
-
-/* TABLE */
-.table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-.data-table { width:100%; border-collapse:collapse; min-width:400px; }
-.data-table th { font-family:'Syne',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); padding:9px 12px; text-align:left; border-bottom:1.5px solid var(--sand); white-space:nowrap; }
-.data-table td { padding:12px 12px; font-size:13px; color:var(--text-main); border-bottom:1px solid var(--sand); vertical-align:middle; }
-.data-table tr:last-child td { border-bottom:none; }
-.data-table tr:hover td { background:rgba(245,240,232,0.5); }
-.action-btns { display:flex; gap:5px; }
-.btn-edit { background:rgba(74,127,181,0.1); color:var(--blue); border:none; padding:5px 10px; border-radius:6px; font-size:11.5px; font-weight:600; cursor:pointer; font-family:'Syne',sans-serif; transition:all 0.18s; }
-.btn-edit:hover { background:rgba(74,127,181,0.2); }
-.btn-del { background:rgba(224,82,82,0.1); color:var(--red); border:none; padding:5px 10px; border-radius:6px; font-size:11.5px; font-weight:600; cursor:pointer; font-family:'Syne',sans-serif; transition:all 0.18s; }
-.btn-del:hover { background:rgba(224,82,82,0.2); }
-
-/* FORMS */
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-.form-group { margin-bottom:14px; }
-.form-label { display:block; font-family:'Syne',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:5px; }
-.form-input { width:100%; background:var(--cream); border:1.5px solid var(--sand); border-radius:9px; padding:10px 12px; font-family:'DM Sans',sans-serif; font-size:13.5px; color:var(--text-main); outline:none; transition:border-color 0.2s; }
-.form-input:focus { border-color:var(--green-accent); background:#fff; }
-textarea.form-input { resize:vertical; min-height:75px; }
-.btn-save { background:var(--green-bright); color:#fff; border:none; padding:11px 22px; border-radius:9px; font-family:'Syne',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s; }
-.btn-save:hover { background:var(--green-mid); }
-.btn-cancel { background:var(--cream); color:var(--text-muted); border:1.5px solid var(--sand); padding:11px 22px; border-radius:9px; font-family:'Syne',sans-serif; font-size:13px; font-weight:600; cursor:pointer; margin-right:8px; }
-.form-footer { display:flex; justify-content:flex-end; margin-top:6px; }
-
-/* MODAL */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(13,43,30,0.55); backdrop-filter:blur(6px); z-index:200; align-items:center; justify-content:center; padding:16px; }
-.modal-overlay.open { display:flex; animation:fadeIn 0.2s ease; }
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.stat-card{background:#fff;border:1.5px solid var(--sand);border-radius:15px;padding:16px;transition:box-shadow 0.2s;}
+.stat-card:hover{box-shadow:0 4px 18px rgba(13,43,30,0.07);}
+.stat-card-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:9px;}
+.stat-card-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--green-deep);line-height:1;}
+.stat-card-lbl{font-size:11px;color:var(--text-muted);margin-top:3px;}
+.sec-card{background:#fff;border:1.5px solid var(--sand);border-radius:17px;padding:20px;margin-bottom:16px;}
+.sec-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.sec-card-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--green-deep);}
+.btn-add{display:flex;align-items:center;gap:5px;background:var(--green-bright);color:#fff;border:none;padding:8px 13px;border-radius:8px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.btn-add:hover{background:var(--green-mid);}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.data-table{width:100%;border-collapse:collapse;min-width:380px;}
+.data-table th{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);padding:9px 11px;text-align:left;border-bottom:1.5px solid var(--sand);white-space:nowrap;}
+.data-table td{padding:11px 11px;font-size:12.5px;color:var(--text-main);border-bottom:1px solid var(--sand);vertical-align:middle;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:rgba(245,240,232,0.5);}
+.action-btns{display:flex;gap:4px;}
+.btn-edit{background:rgba(74,127,181,0.1);color:var(--blue);border:none;padding:4px 9px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;}
+.btn-del{background:rgba(224,82,82,0.1);color:var(--red);border:none;padding:4px 9px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.form-group{margin-bottom:13px;}
+.form-label{display:block;font-family:'Syne',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;}
+.form-input{width:100%;background:var(--cream);border:1.5px solid var(--sand);border-radius:9px;padding:10px 11px;font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--text-main);outline:none;transition:border-color 0.2s;}
+.form-input:focus{border-color:var(--green-accent);background:#fff;}
+textarea.form-input{resize:vertical;min-height:72px;}
+.btn-save{background:var(--green-bright);color:#fff;border:none;padding:11px 20px;border-radius:9px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.btn-save:hover{background:var(--green-mid);}
+.btn-cancel{background:var(--cream);color:var(--text-muted);border:1.5px solid var(--sand);padding:11px 20px;border-radius:9px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;}
+.form-footer{display:flex;justify-content:flex-end;margin-top:4px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,43,30,0.55);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;animation:fadeIn 0.2s ease;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-box { background:#fff; border-radius:20px; width:100%; max-width:500px; overflow:hidden; animation:slideUp 0.3s cubic-bezier(0.22,1,0.36,1); max-height:90vh; overflow-y:auto; }
-@keyframes slideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.modal-hd { background:linear-gradient(135deg,var(--green-deep),var(--green-mid)); padding:20px 24px 16px; position:relative; }
-.modal-hd h2 { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; color:#fff; }
-.modal-close-btn { position:absolute; top:12px; right:14px; width:28px; height:28px; background:rgba(255,255,255,0.15); border:none; border-radius:50%; cursor:pointer; color:#fff; font-size:15px; display:flex; align-items:center; justify-content:center; }
-.modal-bd { padding:20px 24px; }
-
+.modal-box{background:#fff;border-radius:19px;width:100%;max-width:500px;overflow:hidden;animation:slideUp 0.28s cubic-bezier(0.22,1,0.36,1);max-height:90vh;overflow-y:auto;}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-hd{background:linear-gradient(135deg,var(--green-deep),var(--green-mid));padding:18px 22px 14px;position:relative;}
+.modal-hd h2{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;}
+.modal-close-btn{position:absolute;top:12px;right:13px;width:27px;height:27px;background:rgba(255,255,255,0.15);border:none;border-radius:50%;cursor:pointer;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.modal-bd{padding:18px 22px;}
 /* Reports */
-.report-item { padding:12px; background:var(--cream); border-radius:12px; margin-bottom:9px; }
-.report-item:last-child { margin-bottom:0; }
-.report-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:3px; gap:8px; flex-wrap:wrap; }
-.report-type { font-family:'Syne',sans-serif; font-size:12.5px; font-weight:700; color:var(--green-deep); }
-.report-date { font-size:11px; color:var(--text-muted); flex-shrink:0; }
-.report-loc { font-size:12px; color:var(--text-muted); margin-bottom:2px; }
-.report-desc { font-size:11.5px; color:var(--text-muted); }
-.report-resolve { background:rgba(76,175,120,0.1); color:var(--green-bright); border:none; padding:4px 10px; border-radius:7px; font-size:11.5px; font-weight:600; cursor:pointer; font-family:'Syne',sans-serif; margin-top:7px; }
-
+.report-item{padding:14px;background:var(--cream);border-radius:12px;margin-bottom:9px;}
+.report-item:last-child{margin-bottom:0;}
+.report-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;gap:8px;flex-wrap:wrap;}
+.report-type{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--green-deep);}
+.report-date{font-size:11px;color:var(--text-muted);}
+.report-loc{font-size:12px;color:var(--text-muted);margin-bottom:2px;}
+.report-desc{font-size:11.5px;color:var(--text-muted);margin-bottom:4px;}
+.report-reporter{display:flex;align-items:center;gap:6px;margin-top:5px;font-size:11.5px;color:var(--text-muted);}
+.reporter-mini-avatar{width:20px;height:20px;background:var(--green-bright);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;}
+.report-badges{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+.report-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:5px;}
+.has-photo{background:rgba(74,127,181,0.1);color:var(--blue);}
+.no-photo{background:rgba(232,135,74,0.1);color:var(--orange);}
+.report-resolve{background:rgba(76,175,120,0.1);color:var(--green-bright);border:none;padding:4px 10px;border-radius:7px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;margin-top:6px;}
+.report-flag{background:rgba(224,82,82,0.1);color:var(--red);border:none;padding:4px 10px;border-radius:7px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;margin-top:6px;margin-left:6px;}
 /* Schedule editor */
-.sch-edit-row { display:grid; grid-template-columns:64px 1fr 110px 70px; gap:8px; align-items:center; margin-bottom:8px; }
-.sch-lbl { font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; }
-
+.sch-edit-row{display:grid;grid-template-columns:52px 1fr 100px 65px;gap:7px;align-items:center;margin-bottom:7px;}
+.sch-lbl{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;}
 /* Trucks */
-.truck-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-
+.truck-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
 /* Dashboard */
-.dash-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-
-.empty-state { text-align:center; padding:32px 16px; color:var(--text-muted); font-size:13.5px; }
-.empty-state div { font-size:32px; margin-bottom:8px; }
-
-/* TOAST */
-.toast-popup { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(16px); background:var(--green-deep); color:#f5f0e8; padding:12px 20px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:13px; z-index:999; box-shadow:0 6px 24px rgba(0,0,0,0.2); opacity:0; transition:all 0.4s cubic-bezier(0.22,1,0.36,1); white-space:nowrap; max-width:90vw; text-align:center; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .stats-row { grid-template-columns:1fr 1fr; }
-  .truck-cards { grid-template-columns:1fr 1fr; }
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+/* Users table */
+.user-row-avatar{width:28px;height:28px;background:var(--green-bright);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700;}
+.flagged-badge{background:rgba(224,82,82,0.12);color:var(--red);font-size:10px;font-weight:600;padding:2px 7px;border-radius:5px;}
+.empty-state{text-align:center;padding:28px 16px;color:var(--text-muted);font-size:13px;}
+.empty-state div{font-size:30px;margin-bottom:7px;}
+.toast-popup{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(14px);background:var(--green-deep);color:#f5f0e8;padding:11px 18px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;z-index:999;box-shadow:0 6px 22px rgba(0,0,0,0.2);opacity:0;transition:all 0.4s cubic-bezier(0.22,1,0.36,1);white-space:nowrap;max-width:90vw;text-align:center;}
+/* RESPONSIVE */
+@media(max-width:1024px){.stats-row{grid-template-columns:1fr 1fr}.truck-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  body{display:block}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;z-index:90;transform:translateX(-100%);height:100%;}
+  .sidebar.open{transform:translateX(0);}
+  .sidebar-overlay.show{display:block;}
+  .admin-main{width:100%;}
+  .menu-btn{display:flex;align-items:center;justify-content:center;}
+  .badge-admin{display:none;}
+  .content{padding:14px;}
+  .stats-row{grid-template-columns:1fr 1fr;gap:9px;}
+  .dash-grid{grid-template-columns:1fr;}
+  .truck-cards{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .sch-edit-row{grid-template-columns:46px 1fr 84px 58px;gap:5px;}
+  .modal-overlay{align-items:flex-end;padding:0;}
+  .modal-box{border-radius:19px 19px 0 0;max-height:95vh;}
+  .modal-bd{padding:16px;}
 }
-@media (max-width: 768px) {
-  body { display:block; }
-  .sidebar { position:fixed; left:0; top:0; bottom:0; z-index:90; transform:translateX(-100%); height:100%; }
-  .sidebar.open { transform:translateX(0); }
-  .sidebar-overlay.show { display:block; }
-  .admin-main { width:100%; }
-  .menu-btn { display:flex; align-items:center; justify-content:center; }
-  .badge-admin { display:none; }
-  .content { padding:16px; }
-  .stats-row { grid-template-columns:1fr 1fr; gap:10px; }
-  .dash-grid { grid-template-columns:1fr; }
-  .truck-cards { grid-template-columns:1fr; }
-  .form-row { grid-template-columns:1fr; }
-  .sch-edit-row { grid-template-columns:50px 1fr 90px 60px; gap:6px; }
-  .modal-overlay { align-items:flex-end; padding:0; }
-  .modal-box { border-radius:20px 20px 0 0; max-height:95vh; }
-  .modal-bd { padding:18px 18px; }
-}
-@media (max-width: 480px) {
-  .topbar { padding:0 14px; }
-  .stats-row { grid-template-columns:1fr 1fr; gap:8px; }
-  .stat-card { padding:14px; }
-  .stat-card-val { font-size:22px; }
-  .sec-card { padding:16px; }
+@media(max-width:480px){
+  .topbar{padding:0 12px;}
+  .stats-row{gap:7px;}
+  .stat-card{padding:12px;}
+  .stat-card-val{font-size:20px;}
+  .sec-card{padding:14px;}
 }
 </style>
 </head>
 <body>
-
-<!-- Sidebar overlay -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
-
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <div class="sidebar-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></div>
@@ -186,46 +159,44 @@ textarea.form-input { resize:vertical; min-height:75px; }
   <button class="nav-item" onclick="showSection('announcements',this)"><span class="nav-item-icon">📢</span>Announcements</button>
   <button class="nav-item" onclick="showSection('schedule',this)"><span class="nav-item-icon">🗓️</span>Collection Schedule</button>
   <button class="nav-item" onclick="showSection('reports',this)"><span class="nav-item-icon">🚨</span>Community Reports</button>
-  <div class="sidebar-section">Content</div>
+  <div class="sidebar-section">Manage</div>
+  <button class="nav-item" onclick="showSection('users',this)"><span class="nav-item-icon">👥</span>Residents</button>
   <button class="nav-item" onclick="showSection('tips',this)"><span class="nav-item-icon">🌱</span>Eco Tips</button>
   <button class="nav-item" onclick="showSection('trucks',this)"><span class="nav-item-icon">🚛</span>Truck Status</button>
   <div class="sidebar-footer">
     <div class="admin-profile">
-      <div class="admin-avatar">👤</div>
+      <div class="admin-avatar" id="adminAvatarSidebar">?</div>
       <div><div class="admin-name" id="adminNameSidebar">Loading...</div><div class="admin-role" id="adminRoleSidebar">—</div></div>
     </div>
+    <div class="brgy-pill" id="adminBrgyPill">—</div>
     <button class="btn-logout" onclick="logout()">🚪 Log Out</button>
   </div>
 </aside>
 
-<!-- MAIN -->
 <div class="admin-main">
   <div class="topbar">
     <div class="topbar-left">
-      <button class="menu-btn" id="menuBtn" onclick="openSidebar()">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
+      <button class="menu-btn" onclick="openSidebar()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       <span class="topbar-title" id="topbarTitle">Dashboard</span>
     </div>
     <div class="topbar-actions">
-      <span class="badge-admin">🔐 Admin Portal</span>
-      <a href="index.html" style="text-decoration:none"><button class="btn-sm" style="background:var(--cream);border:1.5px solid var(--sand);color:var(--text-main)">👁 View Site</button></a>
+      <span class="badge-admin">🔐 Admin — <span id="topbarBrgy">—</span></span>
+      <a href="mainSystem.html" style="text-decoration:none"><button class="btn-sm" style="background:var(--cream);border:1.5px solid var(--sand);color:var(--text-main)">👁 View Site</button></a>
     </div>
   </div>
 
   <div class="content">
-
     <!-- DASHBOARD -->
     <div class="page-section active" id="section-dashboard">
       <div class="stats-row">
         <div class="stat-card"><div class="stat-card-icon" style="background:rgba(76,175,120,0.12)">📢</div><div class="stat-card-val" id="statAnn">0</div><div class="stat-card-lbl">Announcements</div></div>
         <div class="stat-card"><div class="stat-card-icon" style="background:rgba(232,135,74,0.12)">🚨</div><div class="stat-card-val" id="statRep">0</div><div class="stat-card-lbl">Open Reports</div></div>
-        <div class="stat-card"><div class="stat-card-icon" style="background:rgba(74,127,181,0.12)">🌱</div><div class="stat-card-val" id="statTips">0</div><div class="stat-card-lbl">Eco Tips</div></div>
-        <div class="stat-card"><div class="stat-card-icon" style="background:rgba(139,111,181,0.12)">🚛</div><div class="stat-card-val">3</div><div class="stat-card-lbl">Active Trucks</div></div>
+        <div class="stat-card"><div class="stat-card-icon" style="background:rgba(74,127,181,0.12)">👥</div><div class="stat-card-val" id="statUsers">0</div><div class="stat-card-lbl">Residents</div></div>
+        <div class="stat-card"><div class="stat-card-icon" style="background:rgba(224,82,82,0.12)">🚩</div><div class="stat-card-val" id="statFlagged">0</div><div class="stat-card-lbl">Flagged Reports</div></div>
       </div>
       <div class="dash-grid">
-        <div class="sec-card"><div class="sec-card-header"><span class="sec-card-title">📢 Recent Announcements</span></div><div id="dashAnnouncements"></div></div>
-        <div class="sec-card"><div class="sec-card-header"><span class="sec-card-title">🚨 Latest Reports</span></div><div id="dashReports"></div></div>
+        <div class="sec-card"><div class="sec-card-header"><span class="sec-card-title">📢 Recent Announcements</span></div><div id="dashAnn"></div></div>
+        <div class="sec-card"><div class="sec-card-header"><span class="sec-card-title">🚨 Latest Reports</span></div><div id="dashRep"></div></div>
       </div>
     </div>
 
@@ -241,17 +212,32 @@ textarea.form-input { resize:vertical; min-height:75px; }
     <div class="page-section" id="section-schedule">
       <div class="sec-card">
         <div class="sec-card-header"><span class="sec-card-title">Edit Collection Schedule</span></div>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">Set the waste type and completion status for each day.</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Changes apply only to <strong id="scheduleBarangayLabel">your barangay</strong>.</p>
         <div id="scheduleEditor"></div>
-        <div class="form-footer" style="margin-top:14px"><button class="btn-save" onclick="saveSchedule()">💾 Save Schedule</button></div>
+        <div class="form-footer" style="margin-top:12px"><button class="btn-save" onclick="saveSchedule()">💾 Save Schedule</button></div>
       </div>
     </div>
 
     <!-- REPORTS -->
     <div class="page-section" id="section-reports">
       <div class="sec-card">
-        <div class="sec-card-header"><span class="sec-card-title">Community Reports</span><button class="btn-sm btn-primary-sm" onclick="clearReports()">Clear All</button></div>
+        <div class="sec-card-header">
+          <span class="sec-card-title">Community Reports — <span id="reportsBarangayLabel" style="color:var(--green-bright)">—</span></span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn-sm" style="background:rgba(224,82,82,0.1);color:var(--red);border:none" onclick="filterReports('flagged')">🚩 Flagged</button>
+            <button class="btn-sm" style="background:var(--cream);border:1.5px solid var(--sand);color:var(--text-main)" onclick="filterReports('all')">All</button>
+            <button class="btn-sm btn-primary-sm" onclick="clearReports()">Clear All</button>
+          </div>
+        </div>
         <div id="reportsList"></div>
+      </div>
+    </div>
+
+    <!-- RESIDENTS/USERS -->
+    <div class="page-section" id="section-users">
+      <div class="sec-card">
+        <div class="sec-card-header"><span class="sec-card-title">Registered Residents — <span id="usersBarangayLabel" style="color:var(--green-bright)">—</span></span></div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th></th><th>Name</th><th>Email</th><th>Phone</th><th>Reports</th><th>Joined</th><th>Actions</th></tr></thead><tbody id="usersTable"></tbody></table></div>
       </div>
     </div>
 
@@ -268,87 +254,159 @@ textarea.form-input { resize:vertical; min-height:75px; }
       <div class="sec-card">
         <div class="sec-card-header"><span class="sec-card-title">Truck Status & Routes</span></div>
         <div class="truck-cards" id="truckEditor"></div>
-        <div class="form-footer" style="margin-top:14px"><button class="btn-save" onclick="saveTrucks()">💾 Save Truck Status</button></div>
+        <div class="form-footer" style="margin-top:12px"><button class="btn-save" onclick="saveTrucks()">💾 Save</button></div>
       </div>
     </div>
-
   </div>
 </div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box">
-    <div class="modal-hd"><button class="modal-close-btn" onclick="closeModal()">×</button><h2 id="modalTitle">Modal</h2></div>
-    <div class="modal-bd" id="modalBody"></div>
-  </div>
+  <div class="modal-box"><div class="modal-hd"><button class="modal-close-btn" onclick="closeModal()">×</button><h2 id="modalTitle">—</h2></div><div class="modal-bd" id="modalBody"></div></div>
 </div>
 
 <script>
+// ── Auth ──────────────────────────────────────────────────
 const adminUser=JSON.parse(sessionStorage.getItem('adminUser')||'null');
-if(!adminUser){window.location.href='welcome.html';}
-else{document.getElementById('adminNameSidebar').textContent=adminUser.name;document.getElementById('adminRoleSidebar').textContent=adminUser.position+' — '+adminUser.barangay;}
-function logout(){sessionStorage.removeItem('adminUser');window.location.href='index.html';}
+if(!adminUser){window.location.href='index.html';}
+const brgy=adminUser.barangay;
+function bkey(b,k){return 'brgy_'+b.replace(/[\s.]/g,'_')+'_'+k;}
+function getData(k,d){try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;}}
+function setData(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
-// Sidebar mobile
+const initials=(adminUser.name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+document.getElementById('adminAvatarSidebar').textContent=initials;
+document.getElementById('adminNameSidebar').textContent=adminUser.name;
+document.getElementById('adminRoleSidebar').textContent=adminUser.position;
+document.getElementById('adminBrgyPill').textContent='📍 '+brgy;
+document.getElementById('topbarBrgy').textContent=brgy;
+
+function logout(){sessionStorage.removeItem('adminUser');window.location.href='index.html';}
 function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('show');document.body.style.overflow='hidden';}
 function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('show');document.body.style.overflow='';}
 
-function getData(k,d){try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;}}
-function setData(k,v){localStorage.setItem(k,JSON.stringify(v));}
-const defAnn=[{id:1,title:"Special Collection this Saturday",body:"All barangays will have an extra collection run this Saturday from 7AM to 12PM.",date:"Feb 22",tag:"Collection",tagColor:"green"},{id:2,title:"No Collection on Feb 25 — Holiday",body:"In observance of EDSA Anniversary, garbage collection will be suspended.",date:"Feb 20",tag:"Holiday",tagColor:"orange"},{id:3,title:"New Drop-off Center Now Open",body:"A new e-waste drop-off center is now open at the Barangay Hall every weekday.",date:"Feb 18",tag:"Facility",tagColor:"blue"}];
+// ── Default data ─────────────────────────────────────────
 const defSch=[{day:"Mon",type:"Biodegradable",fill:100,color:"var(--green-accent)",done:true},{day:"Tue",type:"Recyclable",fill:100,color:"var(--blue)",done:true},{day:"Wed",type:"Residual",fill:65,color:"var(--orange)",done:false},{day:"Thu",type:"Biodegradable",fill:0,color:"var(--green-accent)",done:false},{day:"Fri",type:"Recyclable",fill:0,color:"var(--blue)",done:false},{day:"Sat",type:"Special Run",fill:0,color:"var(--purple)",done:false}];
 const defTips=[{id:1,emoji:"🧴",title:"Rinse Before You Toss",text:"Rinse bottles before placing them in the recyclable bin."},{id:2,emoji:"🍌",title:"Compost Food Scraps",text:"Banana peels and vegetable trimmings can be composted."},{id:3,emoji:"🛍️",title:"Bring Your Own Bag",text:"Reusable bags eliminate dozens of plastic bags monthly."},{id:4,emoji:"📦",title:"Flatten Cardboard",text:"Flatten boxes before disposal for more efficient recycling."}];
-const defTrucks=[{id:1,name:"Truck #1 — Zone A",status:"En Route",eta:"~25 mins",progress:65},{id:2,name:"Truck #2 — Zone B",status:"Completed",eta:"Done ✓",progress:100},{id:3,name:"Truck #3 — Zone C",status:"Starting Soon",eta:"2:00 PM",progress:15}];
+const defTrucks=[{name:"Truck #1 — Zone A",status:"En Route",eta:"~25 mins",progress:65},{name:"Truck #2 — Zone B",status:"Completed",eta:"Done ✓",progress:100},{name:"Truck #3 — Zone C",status:"Starting Soon",eta:"2:00 PM",progress:15}];
 
+// ── Navigation ───────────────────────────────────────────
 function showSection(id,btn){
   document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('section-'+id).classList.add('active'); btn.classList.add('active');
-  const titles={dashboard:'Dashboard',announcements:'Announcements',schedule:'Collection Schedule',reports:'Community Reports',tips:'Eco Tips',trucks:'Truck Status'};
-  document.getElementById('topbarTitle').textContent=titles[id];
-  closeSidebar();
-  if(id==='reports')renderReports(); else if(id==='schedule')renderScheduleEditor(); else if(id==='tips')renderTips(); else if(id==='trucks')renderTrucks(); else if(id==='announcements')renderAnnTable(); else renderDashboard();
+  const T={dashboard:'Dashboard',announcements:'Announcements',schedule:'Collection Schedule',reports:'Community Reports',users:'Residents',tips:'Eco Tips',trucks:'Truck Status'};
+  document.getElementById('topbarTitle').textContent=T[id]; closeSidebar();
+  const fns={reports:renderReports,schedule:renderScheduleEditor,tips:renderTips,trucks:renderTrucks,announcements:renderAnnTable,users:renderUsers,dashboard:renderDashboard};
+  if(fns[id])fns[id]();
 }
 
+// ── Dashboard ─────────────────────────────────────────────
 function renderDashboard(){
-  const ann=getData('announcements',defAnn), reps=getData('communityReports',[]), tips=getData('ecoTips',defTips);
-  document.getElementById('statAnn').textContent=ann.length; document.getElementById('statRep').textContent=reps.length; document.getElementById('statTips').textContent=tips.length;
-  document.getElementById('dashAnnouncements').innerHTML=ann.slice(0,3).map(a=>`<div style="padding:9px 0;border-bottom:1px solid var(--sand)"><div style="font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--green-deep)">${a.title}</div><div style="font-size:11.5px;color:var(--text-muted);margin-top:1px">${a.date} · ${a.tag}</div></div>`).join('')||'<div class="empty-state"><div>📢</div>No announcements</div>';
-  document.getElementById('dashReports').innerHTML=reps.slice(-5).reverse().map(r=>`<div style="padding:9px 0;border-bottom:1px solid var(--sand)"><div style="font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--green-deep)">${r.type}</div><div style="font-size:11.5px;color:var(--text-muted);margin-top:1px">${r.location} · ${r.date}</div></div>`).join('')||'<div class="empty-state"><div>🚨</div>No reports yet</div>';
+  const ann=getData(bkey(brgy,'announcements'),[]), reps=getData(bkey(brgy,'reports'),[]), users=getData(bkey(brgy,'users'),[]);
+  const flagged=reps.filter(r=>r.flagged).length;
+  document.getElementById('statAnn').textContent=ann.length;
+  document.getElementById('statRep').textContent=reps.length;
+  document.getElementById('statUsers').textContent=users.length;
+  document.getElementById('statFlagged').textContent=flagged;
+  document.getElementById('dashAnn').innerHTML=ann.slice(0,3).map(a=>`<div style="padding:8px 0;border-bottom:1px solid var(--sand)"><div style="font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--green-deep)">${a.title}</div><div style="font-size:11px;color:var(--text-muted);margin-top:1px">${a.date} · ${a.tag}</div></div>`).join('')||'<div class="empty-state"><div>📢</div>No announcements yet</div>';
+  document.getElementById('dashRep').innerHTML=reps.slice(-5).reverse().map(r=>`<div style="padding:8px 0;border-bottom:1px solid var(--sand)"><div style="font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--green-deep)">${r.type}${r.flagged?'<span style="color:var(--red);font-size:11px;margin-left:6px">🚩 Flagged</span>':''}</div><div style="font-size:11px;color:var(--text-muted);margin-top:1px">${r.location} · ${r.date}</div><div style="font-size:11px;color:var(--text-muted)">By: ${r.reporterName}</div></div>`).join('')||'<div class="empty-state"><div>🚨</div>No reports yet</div>';
 }
 renderDashboard();
 
+// ── Announcements ─────────────────────────────────────────
 function renderAnnTable(){
-  const ann=getData('announcements',defAnn);
+  const ann=getData(bkey(brgy,'announcements'),[]);
   document.getElementById('annTable').innerHTML=ann.map((a,i)=>`<tr><td><strong>${a.title}</strong><br><span style="font-size:11px;color:var(--text-muted)">${a.body.slice(0,50)}...</span></td><td><span class="badge-sm badge-${a.tagColor}">${a.tag}</span></td><td style="white-space:nowrap">${a.date}</td><td><div class="action-btns"><button class="btn-edit" onclick="editAnn(${i})">Edit</button><button class="btn-del" onclick="deleteAnn(${i})">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="4" class="empty-state"><div>📢</div>No announcements</td></tr>';
 }
 function annForm(a,idx){return `<div class="form-group"><label class="form-label">Title</label><input class="form-input" id="fAnnTitle" value="${a.title||''}"></div><div class="form-group"><label class="form-label">Body</label><textarea class="form-input" id="fAnnBody">${a.body||''}</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Tag Label</label><input class="form-input" id="fAnnTag" value="${a.tag||''}"></div><div class="form-group"><label class="form-label">Tag Color</label><select class="form-input" id="fAnnColor"><option value="green" ${a.tagColor==='green'?'selected':''}>Green</option><option value="orange" ${a.tagColor==='orange'?'selected':''}>Orange</option><option value="blue" ${a.tagColor==='blue'?'selected':''}>Blue</option><option value="red" ${a.tagColor==='red'?'selected':''}>Red</option></select></div></div><div class="form-footer"><button class="btn-cancel" onclick="closeModal()">Cancel</button><button class="btn-save" onclick="saveAnn(${idx})">Save</button></div>`;}
-function editAnn(idx){const ann=getData('announcements',defAnn);openModal('ann-edit');document.getElementById('modalTitle').textContent='Edit Announcement';document.getElementById('modalBody').innerHTML=annForm(ann[idx],idx);}
-function openModal(type){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';if(type==='ann-new'){document.getElementById('modalTitle').textContent='New Announcement';document.getElementById('modalBody').innerHTML=annForm({},-1);}else if(type==='tip-new'){document.getElementById('modalTitle').textContent='New Eco Tip';document.getElementById('modalBody').innerHTML=tipForm({},-1);}}
-function saveAnn(idx){const title=document.getElementById('fAnnTitle').value.trim(),body=document.getElementById('fAnnBody').value.trim(),tag=document.getElementById('fAnnTag').value.trim(),tagColor=document.getElementById('fAnnColor').value;if(!title||!body){showToast('⚠️ Fill in title and body.');return;}const ann=getData('announcements',defAnn),now=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});if(idx===-1)ann.unshift({id:Date.now(),title,body,tag,tagColor,date:now});else ann[idx]={...ann[idx],title,body,tag,tagColor};setData('announcements',ann);closeModal();renderAnnTable();renderDashboard();showToast('✅ Announcement saved!');}
-function deleteAnn(idx){if(!confirm('Delete this announcement?'))return;const ann=getData('announcements',defAnn);ann.splice(idx,1);setData('announcements',ann);renderAnnTable();renderDashboard();showToast('🗑️ Deleted.');}
+function editAnn(idx){const ann=getData(bkey(brgy,'announcements'),[]);openModal('ann-edit');document.getElementById('modalTitle').textContent='Edit Announcement';document.getElementById('modalBody').innerHTML=annForm(ann[idx],idx);}
+function saveAnn(idx){const title=document.getElementById('fAnnTitle').value.trim(),body=document.getElementById('fAnnBody').value.trim(),tag=document.getElementById('fAnnTag').value.trim(),tagColor=document.getElementById('fAnnColor').value;if(!title||!body){showToast('⚠️ Fill in title and body.');return;}const ann=getData(bkey(brgy,'announcements'),[]),now=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});if(idx===-1)ann.unshift({id:Date.now(),title,body,tag,tagColor,date:now});else ann[idx]={...ann[idx],title,body,tag,tagColor};setData(bkey(brgy,'announcements'),ann);closeModal();renderAnnTable();renderDashboard();showToast('✅ Announcement saved!');}
+function deleteAnn(idx){if(!confirm('Delete this announcement?'))return;const ann=getData(bkey(brgy,'announcements'),[]);ann.splice(idx,1);setData(bkey(brgy,'announcements'),ann);renderAnnTable();renderDashboard();showToast('🗑️ Deleted.');}
 
-function renderScheduleEditor(){const sch=getData('collectionSchedule',defSch);document.getElementById('scheduleEditor').innerHTML=`<div class="sch-edit-row" style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px"><span>Day</span><span>Type</span><span>Progress %</span><span>Done?</span></div>`+sch.map((s,i)=>`<div class="sch-edit-row"><span class="sch-lbl">${s.day}</span><input class="form-input" id="schType${i}" value="${s.type}" style="padding:7px 9px;font-size:12.5px"><input class="form-input" type="number" id="schFill${i}" value="${s.fill}" min="0" max="100" style="padding:7px 9px;font-size:12.5px"><label style="display:flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" id="schDone${i}" ${s.done?'checked':''} style="width:15px;height:15px;accent-color:var(--green-bright)"><span style="font-size:11.5px;color:var(--text-muted)">Done</span></label></div>`).join('');}
-function saveSchedule(){const sch=getData('collectionSchedule',defSch),tc={'Biodegradable':'var(--green-accent)','Recyclable':'var(--blue)','Residual':'var(--orange)','Special Run':'var(--purple)'};sch.forEach((s,i)=>{s.type=document.getElementById('schType'+i).value;s.fill=parseInt(document.getElementById('schFill'+i).value)||0;s.done=document.getElementById('schDone'+i).checked;s.color=tc[s.type]||'var(--green-accent)';});setData('collectionSchedule',sch);showToast('✅ Schedule updated!');}
+// ── Schedule ─────────────────────────────────────────────
+function renderScheduleEditor(){
+  document.getElementById('scheduleBarangayLabel').textContent=brgy;
+  const sch=getData(bkey(brgy,'schedule'),defSch);
+  document.getElementById('scheduleEditor').innerHTML=`<div class="sch-edit-row" style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px"><span>Day</span><span>Type</span><span>Progress %</span><span>Done?</span></div>`+sch.map((s,i)=>`<div class="sch-edit-row"><span class="sch-lbl">${s.day}</span><input class="form-input" id="schType${i}" value="${s.type}" style="padding:7px 9px;font-size:12px"><input class="form-input" type="number" id="schFill${i}" value="${s.fill}" min="0" max="100" style="padding:7px 9px;font-size:12px"><label style="display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" id="schDone${i}" ${s.done?'checked':''} style="width:14px;height:14px;accent-color:var(--green-bright)"><span style="font-size:11px;color:var(--text-muted)">Done</span></label></div>`).join('');
+}
+function saveSchedule(){const sch=getData(bkey(brgy,'schedule'),defSch),tc={'Biodegradable':'var(--green-accent)','Recyclable':'var(--blue)','Residual':'var(--orange)','Special Run':'var(--purple)'};sch.forEach((s,i)=>{s.type=document.getElementById('schType'+i).value;s.fill=parseInt(document.getElementById('schFill'+i).value)||0;s.done=document.getElementById('schDone'+i).checked;s.color=tc[s.type]||'var(--green-accent)';});setData(bkey(brgy,'schedule'),sch);showToast('✅ Schedule updated!');}
 
-function renderReports(){const reps=getData('communityReports',[]),el=document.getElementById('reportsList');el.innerHTML=reps.length?reps.slice().reverse().map((r,i)=>`<div class="report-item"><div class="report-top"><span class="report-type">${r.type}</span><span class="report-date">${r.date} — ${r.name}</span></div><div class="report-loc">📍 ${r.location}</div>${r.desc?`<div class="report-desc">${r.desc}</div>`:''}<button class="report-resolve" onclick="resolveReport(${reps.length-1-i})">✓ Mark Resolved</button></div>`).join(''):'<div class="empty-state"><div>🚨</div>No community reports yet.</div>';}
-function resolveReport(idx){const reps=getData('communityReports',[]);reps.splice(idx,1);setData('communityReports',reps);renderReports();renderDashboard();showToast('✅ Report resolved!');}
-function clearReports(){if(!confirm('Clear all reports?'))return;setData('communityReports',[]);renderReports();renderDashboard();showToast('🗑️ All reports cleared.');}
+// ── Reports ───────────────────────────────────────────────
+let currentFilter='all';
+function renderReports(){
+  document.getElementById('reportsBarangayLabel').textContent=brgy;
+  let reps=getData(bkey(brgy,'reports'),[]);
+  if(currentFilter==='flagged')reps=reps.filter(r=>r.flagged);
+  const el=document.getElementById('reportsList');
+  if(!reps.length){el.innerHTML='<div class="empty-state"><div>🚨</div>No '+(currentFilter==='flagged'?'flagged ':'')+' reports yet for '+brgy+'.</div>';return;}
+  el.innerHTML=reps.slice().reverse().map((r,ri)=>{
+    const origIdx=getData(bkey(brgy,'reports'),[]).findIndex(x=>x.id===r.id);
+    const repInitials=(r.reporterName||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    return `<div class="report-item" style="${r.flagged?'border:1.5px solid rgba(224,82,82,0.3);':''}" id="rep_${r.id}">
+      <div class="report-top"><span class="report-type">${r.type}</span><span class="report-date">${r.date} ${r.time||''}</span></div>
+      <div class="report-loc">📍 ${r.location}</div>
+      ${r.desc?`<div class="report-desc">${r.desc}</div>`:''}
+      <div class="report-reporter"><div class="reporter-mini-avatar">${repInitials}</div><strong>${r.reporterName}</strong> &nbsp;·&nbsp; ${r.reporterPhone}</div>
+      <div class="report-badges">
+        <span class="report-badge ${r.hasPhoto?'has-photo':'no-photo'}">${r.hasPhoto?'📸 '+r.photoCount+' photo(s)':'No photo'}</span>
+        ${r.flagged?'<span class="report-badge" style="background:rgba(224,82,82,0.1);color:var(--red)">🚩 Flagged as troll</span>':''}
+      </div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap">
+        <button class="report-resolve" onclick="resolveReport('${r.id}')">✓ Resolve</button>
+        ${!r.flagged?`<button class="report-flag" onclick="flagReport('${r.id}')">🚩 Flag Troll</button>`:`<button class="report-flag" onclick="unflagReport('${r.id}')">↩ Unflag</button>`}
+      </div>
+    </div>`;}).join('');
+}
+function filterReports(f){currentFilter=f;renderReports();}
+function resolveReport(id){const reps=getData(bkey(brgy,'reports'),[]),idx=reps.findIndex(r=>r.id===id);if(idx<0)return;reps.splice(idx,1);setData(bkey(brgy,'reports'),reps);const rc=getData(bkey(brgy,'resolvedCount'),0);setData(bkey(brgy,'resolvedCount'),rc+1);renderReports();renderDashboard();showToast('✅ Report resolved!');}
+function flagReport(id){const reps=getData(bkey(brgy,'reports'),[]),r=reps.find(r=>r.id===id);if(r){r.flagged=true;setData(bkey(brgy,'reports'),reps);renderReports();renderDashboard();showToast('🚩 Report flagged as potential troll.');}}
+function unflagReport(id){const reps=getData(bkey(brgy,'reports'),[]),r=reps.find(r=>r.id===id);if(r){r.flagged=false;setData(bkey(brgy,'reports'),reps);renderReports();showToast('↩ Report unflagged.');}}
+function clearReports(){if(!confirm('Clear all reports for '+brgy+'?'))return;setData(bkey(brgy,'reports'),[]);renderReports();renderDashboard();showToast('🗑️ All reports cleared.');}
 
-function renderTips(){document.getElementById('tipsTable').innerHTML=getData('ecoTips',defTips).map((t,i)=>`<tr><td style="font-size:20px">${t.emoji}</td><td><strong>${t.title}</strong></td><td style="font-size:12.5px;color:var(--text-muted)">${t.text.slice(0,55)}...</td><td><div class="action-btns"><button class="btn-edit" onclick="editTip(${i})">Edit</button><button class="btn-del" onclick="deleteTip(${i})">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="4" class="empty-state"><div>🌱</div>No tips</td></tr>';}
+// ── Users ─────────────────────────────────────────────────
+function renderUsers(){
+  document.getElementById('usersBarangayLabel').textContent=brgy;
+  const users=getData(bkey(brgy,'users'),[]);
+  const reps=getData(bkey(brgy,'reports'),[]);
+  document.getElementById('usersTable').innerHTML=users.map((u,i)=>{
+    const repCount=reps.filter(r=>r.reporterId===u.id).length;
+    const flagCount=reps.filter(r=>r.reporterId===u.id&&r.flagged).length;
+    const ini=(u.name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    return `<tr>
+      <td><div class="user-row-avatar">${ini}</div></td>
+      <td><strong>${u.name}</strong>${flagCount>0?`<br><span class="flagged-badge">🚩 ${flagCount} flagged</span>`:''}</td>
+      <td style="font-size:12px">${u.email}</td>
+      <td style="font-size:12px">${u.phone||'—'}</td>
+      <td style="text-align:center"><strong>${repCount}</strong></td>
+      <td style="font-size:12px;white-space:nowrap">${u.joinedAt||'—'}</td>
+      <td><button class="btn-del" onclick="removeUser(${i})">Remove</button></td>
+    </tr>`;}).join('')||'<tr><td colspan="7" class="empty-state"><div>👥</div>No registered residents yet</td></tr>';
+  document.getElementById('statUsers').textContent=users.length;
+}
+function removeUser(i){if(!confirm('Remove this user?'))return;const users=getData(bkey(brgy,'users'),[]);users.splice(i,1);setData(bkey(brgy,'users'),users);renderUsers();showToast('🗑️ User removed.');}
+
+// ── Tips ─────────────────────────────────────────────────
+function renderTips(){const tips=getData(bkey(brgy,'tips'),defTips);document.getElementById('tipsTable').innerHTML=tips.map((t,i)=>`<tr><td style="font-size:20px">${t.emoji}</td><td><strong>${t.title}</strong></td><td style="font-size:12px;color:var(--text-muted)">${t.text.slice(0,55)}...</td><td><div class="action-btns"><button class="btn-edit" onclick="editTip(${i})">Edit</button><button class="btn-del" onclick="deleteTip(${i})">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="4" class="empty-state"><div>🌱</div>No tips</td></tr>';}
 function tipForm(t,idx){return `<div class="form-row"><div class="form-group"><label class="form-label">Emoji</label><input class="form-input" id="fTipEmoji" value="${t.emoji||'🌿'}" style="font-size:20px"></div><div class="form-group"><label class="form-label">Title</label><input class="form-input" id="fTipTitle" value="${t.title||''}"></div></div><div class="form-group"><label class="form-label">Content</label><textarea class="form-input" id="fTipText">${t.text||''}</textarea></div><div class="form-footer"><button class="btn-cancel" onclick="closeModal()">Cancel</button><button class="btn-save" onclick="saveTip(${idx})">Save</button></div>`;}
-function editTip(idx){const tips=getData('ecoTips',defTips);openModal('tip-edit');document.getElementById('modalTitle').textContent='Edit Eco Tip';document.getElementById('modalBody').innerHTML=tipForm(tips[idx],idx);}
-function saveTip(idx){const emoji=document.getElementById('fTipEmoji').value.trim(),title=document.getElementById('fTipTitle').value.trim(),text=document.getElementById('fTipText').value.trim();if(!title||!text){showToast('⚠️ Fill in title and content.');return;}const tips=getData('ecoTips',defTips);if(idx===-1)tips.push({id:Date.now(),emoji,title,text});else tips[idx]={...tips[idx],emoji,title,text};setData('ecoTips',tips);closeModal();renderTips();renderDashboard();showToast('✅ Tip saved!');}
-function deleteTip(idx){if(!confirm('Delete this tip?'))return;const tips=getData('ecoTips',defTips);tips.splice(idx,1);setData('ecoTips',tips);renderTips();renderDashboard();showToast('🗑️ Deleted.');}
+function editTip(idx){const tips=getData(bkey(brgy,'tips'),defTips);openModal('tip-edit');document.getElementById('modalTitle').textContent='Edit Eco Tip';document.getElementById('modalBody').innerHTML=tipForm(tips[idx],idx);}
+function saveTip(idx){const emoji=document.getElementById('fTipEmoji').value.trim(),title=document.getElementById('fTipTitle').value.trim(),text=document.getElementById('fTipText').value.trim();if(!title||!text){showToast('⚠️ Fill in title and content.');return;}const tips=getData(bkey(brgy,'tips'),defTips);if(idx===-1)tips.push({id:Date.now(),emoji,title,text});else tips[idx]={...tips[idx],emoji,title,text};setData(bkey(brgy,'tips'),tips);closeModal();renderTips();showToast('✅ Tip saved!');}
+function deleteTip(idx){if(!confirm('Delete this tip?'))return;const tips=getData(bkey(brgy,'tips'),defTips);tips.splice(idx,1);setData(bkey(brgy,'tips'),tips);renderTips();showToast('🗑️ Deleted.');}
 
-function renderTrucks(){const trucks=getData('trucks',defTrucks);document.getElementById('truckEditor').innerHTML=trucks.map((t,i)=>`<div style="background:var(--cream);border:1.5px solid var(--sand);border-radius:14px;padding:18px"><div style="font-size:26px;margin-bottom:9px">🚚</div><div class="form-group"><label class="form-label">Name / Route</label><input class="form-input" id="trName${i}" value="${t.name}" style="padding:8px 10px;font-size:12.5px"></div><div class="form-group"><label class="form-label">Status</label><select class="form-input" id="trStatus${i}" style="padding:8px 10px;font-size:12.5px"><option ${t.status==='En Route'?'selected':''}>En Route</option><option ${t.status==='Completed'?'selected':''}>Completed</option><option ${t.status==='Starting Soon'?'selected':''}>Starting Soon</option><option ${t.status==='Delayed'?'selected':''}>Delayed</option><option ${t.status==='Maintenance'?'selected':''}>Maintenance</option></select></div><div class="form-group"><label class="form-label">ETA / Note</label><input class="form-input" id="trEta${i}" value="${t.eta}" style="padding:8px 10px;font-size:12.5px"></div><div class="form-group"><label class="form-label">Progress %</label><input class="form-input" type="number" id="trProg${i}" value="${t.progress}" min="0" max="100" style="padding:8px 10px;font-size:12.5px"></div></div>`).join('');}
-function saveTrucks(){const trucks=getData('trucks',defTrucks);trucks.forEach((t,i)=>{t.name=document.getElementById('trName'+i).value;t.status=document.getElementById('trStatus'+i).value;t.eta=document.getElementById('trEta'+i).value;t.progress=parseInt(document.getElementById('trProg'+i).value)||0;});setData('trucks',trucks);showToast('✅ Truck status updated!');}
+// ── Trucks ────────────────────────────────────────────────
+function renderTrucks(){const t=getData(bkey(brgy,'trucks'),defTrucks);document.getElementById('truckEditor').innerHTML=t.map((tr,i)=>`<div style="background:var(--cream);border:1.5px solid var(--sand);border-radius:13px;padding:16px"><div style="font-size:24px;margin-bottom:8px">🚚</div><div class="form-group"><label class="form-label">Name / Route</label><input class="form-input" id="trName${i}" value="${tr.name}" style="padding:8px 9px;font-size:12px"></div><div class="form-group"><label class="form-label">Status</label><select class="form-input" id="trStatus${i}" style="padding:8px 9px;font-size:12px"><option ${tr.status==='En Route'?'selected':''}>En Route</option><option ${tr.status==='Completed'?'selected':''}>Completed</option><option ${tr.status==='Starting Soon'?'selected':''}>Starting Soon</option><option ${tr.status==='Delayed'?'selected':''}>Delayed</option><option ${tr.status==='Maintenance'?'selected':''}>Maintenance</option></select></div><div class="form-group"><label class="form-label">ETA / Note</label><input class="form-input" id="trEta${i}" value="${tr.eta}" style="padding:8px 9px;font-size:12px"></div><div class="form-group"><label class="form-label">Progress %</label><input class="form-input" type="number" id="trProg${i}" value="${tr.progress}" min="0" max="100" style="padding:8px 9px;font-size:12px"></div></div>`).join('');}
+function saveTrucks(){const t=getData(bkey(brgy,'trucks'),defTrucks);t.forEach((tr,i)=>{tr.name=document.getElementById('trName'+i).value;tr.status=document.getElementById('trStatus'+i).value;tr.eta=document.getElementById('trEta'+i).value;tr.progress=parseInt(document.getElementById('trProg'+i).value)||0;});setData(bkey(brgy,'trucks'),t);showToast('✅ Truck status updated!');}
 
+// ── Modal ─────────────────────────────────────────────────
+function openModal(type){
+  document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';
+  if(type==='ann-new'){document.getElementById('modalTitle').textContent='New Announcement';document.getElementById('modalBody').innerHTML=annForm({},-1);}
+  else if(type==='tip-new'){document.getElementById('modalTitle').textContent='New Eco Tip';document.getElementById('modalBody').innerHTML=tipForm({},-1);}
+}
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
 function showToast(msg){const t=document.createElement('div');t.textContent=msg;t.className='toast-popup';document.body.appendChild(t);requestAnimationFrame(()=>{t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400);},3000);}
 </script>
 </body>
-
 </html>
