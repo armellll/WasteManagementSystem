@@ -13,7 +13,7 @@
   --sand: #e8dfc8; --text-main: #0d2b1e; --text-muted: #4a6b58;
   --orange: #e8874a; --blue: #4a7fb5; --red: #e05252; --purple: #8b6fb5;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px;}
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); min-height: 100vh; }
 body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:0; background-image:radial-gradient(circle at 10% 20%,rgba(76,175,120,0.08) 0%,transparent 40%),radial-gradient(circle at 90% 80%,rgba(168,224,99,0.07) 0%,transparent 40%); }
 /* NAVBAR */
@@ -25,6 +25,7 @@ body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index
 .nav-logo-name span { color:var(--green-bright); }
 .nav-center { display:flex; align-items:center; gap:2px; }
 .nav-link { font-family:'Syne',sans-serif; font-size:12.5px; font-weight:600; color:var(--text-muted); padding:6px 12px; border-radius:8px; cursor:pointer; transition:all 0.18s; text-decoration:none; border:none; background:transparent; white-space:nowrap; }
+
 .nav-link:hover, .nav-link.active { background:var(--green-bright); color:#fff; }
 .nav-right { display:flex; align-items:center; gap:8px; flex-shrink:0; }
 .user-chip { display:flex; align-items:center; gap:7px; background:#fff; border:1.5px solid var(--sand); border-radius:100px; padding:4px 12px 4px 6px; font-size:12.5px; color:var(--green-deep); font-weight:500; }
@@ -186,10 +187,10 @@ textarea.form-input2 { resize:vertical; min-height:80px; }
     <span class="nav-logo-name">Eco<span>Track</span></span>
   </a>
   <div class="nav-center" id="navCenter">
-    <a class="nav-link active" href="#">Dashboard</a>
-    <a class="nav-link" href="#">Schedule</a>
-    <a class="nav-link" href="#">Reports</a>
-    <a class="nav-link" href="#">Tips</a>
+    <a class="nav-link active" href="#dashboard">Dashboard</a>
+    <a class="nav-link" href="#schedule">Schedule</a>
+    <a class="nav-link" href="#reportModal">Reports</a>
+    <a class="nav-link" href="#tips">Tips</a>
   </div>
   <div class="nav-right">
     <div class="user-chip" id="userChip"><div class="user-avatar" id="userAvatarNav">?</div><span id="userNameNav">Loading...</span></div>
@@ -224,12 +225,12 @@ textarea.form-input2 { resize:vertical; min-height:80px; }
     </div>
   </div>
 
-  <div class="grid-main">
+  <div class="grid-main" id="schedule">
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(76,175,120,0.12)">🗓️</div><span class="card-title">Collection Schedule</span></div><span class="badge-sm badge-green">This Week</span></div>
       <div class="card-body" id="scheduleContainer"></div>
     </div>
-    <div class="card">
+    <div class="card" id="dashboard">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(168,224,99,0.15)">🚛</div><span class="card-title">Live Truck Status</span></div><span class="badge-sm badge-green">Active</span></div>
       <div class="card-body" id="truckContainer"></div>
     </div>
@@ -244,7 +245,7 @@ textarea.form-input2 { resize:vertical; min-height:80px; }
     </div>
   </div>
 
-  <div class="grid-half">
+  <div class="grid-half" id="tips">
     <div class="card">
       <div class="card-header"><div class="card-title-row"><div class="card-icon" style="background:rgba(232,135,74,0.12)">♻️</div><span class="card-title">Segregation Guide</span></div></div>
       <div class="card-body"><div class="seg-grid">
@@ -428,3 +429,4 @@ window.addEventListener('focus',()=>{renderAnn();renderSch();renderTips();render
 </script>
 </body>
 </html>
+
